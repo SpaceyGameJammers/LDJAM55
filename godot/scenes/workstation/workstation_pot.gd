@@ -11,10 +11,10 @@ func _ready():
 func _process(_delta):
 	progress_bar.value = (1 - (timer.time_left / timer.wait_time)) * progress_bar.max_value
 
-func start_interact():
+func start_worker_interact():
 	super.start_worker_interact()
 	timer.paused = false
 
-func stop_interact():
+func stop_worker_interact():
 	super.stop_worker_interact()
 	timer.paused = true

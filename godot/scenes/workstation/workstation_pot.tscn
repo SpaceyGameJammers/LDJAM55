@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://d4jdxqv5piu1u"]
 
 [ext_resource type="Script" path="res://scenes/workstation/workstation_pot.gd" id="1_moqbr"]
-[ext_resource type="Texture2D" uid="uid://cx4w37wuj6xem" path="res://graphics/sprites/spr_workstation_pot.png" id="1_tm0hr"]
+[ext_resource type="Texture2D" uid="uid://cx4w37wuj6xem" path="res://graphics/sprites/workstations/spr_workstation_pot.png" id="1_tm0hr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_en76p"]
 size = Vector2(16, 16)
