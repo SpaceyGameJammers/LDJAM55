@@ -1,9 +1,11 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
-[ext_resource path="pixel_summon_circle.gdshader" type="Shader" id=1]
-[ext_resource path="pixel_summon_circle_texture_1.png" type="Texture" id=2]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://u6os3ube8rdj"]
+
+[ext_resource type="Shader" path="res://shaders/pixel-magic-circle/pixel_summon_circle.gdshader" id="1"]
+[ext_resource type="Texture2D" path="res://shaders/pixel-magic-circle/pixel_summon_circle_texture_1.png" id="2"]
+
 [resource]
-shader = ExtResource( 1 )
-shader_param/texture_1 = ExtResource( 2 )
-
-
-
+shader = ExtResource("1")
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/variation = 0.0
+shader_parameter/texture_1 = ExtResource("2")

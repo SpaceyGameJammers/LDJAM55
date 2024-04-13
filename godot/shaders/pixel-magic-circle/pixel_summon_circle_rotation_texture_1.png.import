@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv2vav6lajg18"
-path="res://.godot/imported/pixel_summon_circle_texture_1.png-5da714eaba446c51c2e408554dc5aaba.ctex"
+uid="uid://bxrsfyjh70jum"
+path="res://.godot/imported/pixel_summon_circle_rotation_texture_1.png-31ed8f753afe3dfc6370f792861cc29b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/pixel-magic-circle/pixel_summon_circle_texture_1.png"
-dest_files=["res://.godot/imported/pixel_summon_circle_texture_1.png-5da714eaba446c51c2e408554dc5aaba.ctex"]
+source_file="res://shaders/pixel-magic-circle/pixel_summon_circle_rotation_texture_1.png"
+dest_files=["res://.godot/imported/pixel_summon_circle_rotation_texture_1.png-31ed8f753afe3dfc6370f792861cc29b.ctex"]
 
 [params]
 
