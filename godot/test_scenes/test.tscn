@@ -20,8 +20,8 @@ position = Vector2(184, 40)
 [node name="WorkstationRegister" parent="." instance=ExtResource("6_reber")]
 position = Vector2(40, 168)
 
-[node name="Player" parent="." instance=ExtResource("2_0r2fj")]
-position = Vector2(40, 144)
-
 [node name="WorkstationTable" parent="." instance=ExtResource("5_fdjni")]
 position = Vector2(144, 168)
+
+[node name="Player" parent="." instance=ExtResource("2_0r2fj")]
+position = Vector2(40, 144)
