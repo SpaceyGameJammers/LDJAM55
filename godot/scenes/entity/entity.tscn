@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://drw0865onnspm"]
+
+[ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="1_nv4dk"]
+[ext_resource type="Script" path="res://scenes/entity/entity.gd" id="1_tgt6x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xu5h"]
+radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cvb4f"]
+radius = 7.0
+
+[node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
+light_mask = 2
+visibility_layer = 3
+script = ExtResource("1_tgt6x")
+nav_agent = NodePath("NavigationAgent2D")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_nv4dk")
+
+[node name="Interact" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
+shape = SubResource("CircleShape2D_2xu5h")
+disabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cvb4f")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
