@@ -20,6 +20,7 @@ func occupy_workstation(type: String):
 			return null
 
 func release_workstation(type: String, workstation:Node):
+	if workstations[type].has(workstation):
 		workstations[type].append(workstation)
 
 func get_free_workstations_per_type():
