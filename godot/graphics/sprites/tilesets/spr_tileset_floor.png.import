@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bniwlf4hp7g5u"
-path="res://.godot/imported/spr_tileset_counter_metal.png-5efaafd062d7c5689c45de34a7b6d410.ctex"
+uid="uid://bonmow7dt2bso"
+path="res://.godot/imported/spr_tileset_floor.png-f440dbeb6d8e7fa67cb80cc3698ea84c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://graphics/sprites/spr_tileset_counter_metal.png"
-dest_files=["res://.godot/imported/spr_tileset_counter_metal.png-5efaafd062d7c5689c45de34a7b6d410.ctex"]
+source_file="res://graphics/sprites/tilesets/spr_tileset_floor.png"
+dest_files=["res://.godot/imported/spr_tileset_floor.png-f440dbeb6d8e7fa67cb80cc3698ea84c.ctex"]
 
 [params]
 
