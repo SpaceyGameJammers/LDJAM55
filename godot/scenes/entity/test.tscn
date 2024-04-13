@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://drw0865onnspm" path="res://scenes/entity/entity.tscn" id="1_13deg"]
 [ext_resource type="TileSet" uid="uid://bsb5g7q5uviho" path="res://graphics/tilesets/tset_resturant.tres" id="1_vs5l8"]
-[ext_resource type="Material" uid="uid://dawwwjfmncyn0" path="res://shaders/pixel-magic-circle/pixel_summon_circle_rotation.tres" id="3_qhtg2"]
+[ext_resource type="Material" uid="uid://bjap81yy8lprd" path="res://shaders/pixel-magic-circle/pixel_summon_circle_rotation.tres" id="3_qhtg2"]
 
 [node name="Test" type="Node2D"]
 

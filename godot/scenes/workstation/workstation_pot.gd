@@ -1,24 +1,20 @@
-extends StaticBody2D
+extends Workstation
 
 @onready var progress_bar = $ProgressBar
 @onready var timer = $Timer
 
-var interacting: bool = false
-var type = "pot"
-
 func _ready():
+	super._ready()
 	timer.paused = true
 	timer.start()
-	WorkstationManager.add_workstation(type, self)
 
 func _process(_delta):
 	progress_bar.value = (1 - (timer.time_left / timer.wait_time)) * progress_bar.max_value
 
 func start_interact():
-	interacting = true
+	super.start_worker_interact()
 	timer.paused = false
 
 func stop_interact():
-	interacting = false
+	super.stop_worker_interact()
 	timer.paused = true
-	WorkstationManager.release_workstation(type, self)

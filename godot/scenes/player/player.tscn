@@ -273,6 +273,7 @@ shape = SubResource("RectangleShape2D_urwfg")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UI" parent="Camera2D" instance=ExtResource("3_tbic2")]
+visible = false
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]

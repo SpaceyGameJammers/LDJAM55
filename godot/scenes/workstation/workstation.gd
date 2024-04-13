@@ -1,20 +1,19 @@
 extends StaticBody2D
+class_name Workstation
 
-var interacting:bool = false
+var worker_interacting: bool = false
+@onready var worker_position: Marker2D = $WorkerPosition
+@export var type:WorkstationManager.WORKSTATION
 
-func _process(delta):
-	if interacting:
-		modulate.r = 0
-		modulate.g = 0
-		modulate.b += delta
-		modulate.b = fmod(modulate.b, 1)
-	else:
-		modulate.r = 1
-		modulate.g = 1
-		modulate.b = 1
+func _ready():
+	WorkstationManager.add_workstation(type, self)
 
-func start_interact():
-	interacting = true
+func start_worker_interact():
+	worker_interacting = true
 
-func stop_interact():
-	interacting = false
+func stop_worker_interact():
+	worker_interacting = false
+	WorkstationManager.release_workstation(type, self)
+
+func get_worker_position(): #Returns the position that the worker should aim for
+	return worker_position.global_position
