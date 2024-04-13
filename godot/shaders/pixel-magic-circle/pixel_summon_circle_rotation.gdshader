@@ -494,6 +494,64 @@ float shape_rays(vec2 uv, float sides, float size, float edge) {
 	float angle = mod(atan(uv.x, uv.y)+3.14159265359, slice)/slice;
 	return clamp(min((size-angle)/edge, angle/edge), 0.0, 1.0);
 }
+vec3 blend_normal(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*c1 + (1.0-opacity)*c2;
+}
+vec3 blend_dissolve(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	if (rand(uv) < opacity) {
+		return c1;
+	} else {
+		return c2;
+	}
+}
+vec3 blend_multiply(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*c1*c2 + (1.0-opacity)*c2;
+}
+vec3 blend_screen(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*(1.0-(1.0-c1)*(1.0-c2)) + (1.0-opacity)*c2;
+}
+float blend_overlay_f(float c1, float c2) {
+	return (c1 < 0.5) ? (2.0*c1*c2) : (1.0-2.0*(1.0-c1)*(1.0-c2));
+}
+vec3 blend_overlay(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*vec3(blend_overlay_f(c1.x, c2.x), blend_overlay_f(c1.y, c2.y), blend_overlay_f(c1.z, c2.z)) + (1.0-opacity)*c2;
+}
+vec3 blend_hard_light(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*0.5*(c1*c2+blend_overlay(uv, c1, c2, 1.0)) + (1.0-opacity)*c2;
+}
+float blend_soft_light_f(float c1, float c2) {
+	return (c2 < 0.5) ? (2.0*c1*c2+c1*c1*(1.0-2.0*c2)) : 2.0*c1*(1.0-c2)+sqrt(c1)*(2.0*c2-1.0);
+}
+vec3 blend_soft_light(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*vec3(blend_soft_light_f(c1.x, c2.x), blend_soft_light_f(c1.y, c2.y), blend_soft_light_f(c1.z, c2.z)) + (1.0-opacity)*c2;
+}
+float blend_burn_f(float c1, float c2) {
+	return (c1==0.0)?c1:max((1.0-((1.0-c2)/c1)),0.0);
+}
+vec3 blend_burn(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*vec3(blend_burn_f(c1.x, c2.x), blend_burn_f(c1.y, c2.y), blend_burn_f(c1.z, c2.z)) + (1.0-opacity)*c2;
+}
+float blend_dodge_f(float c1, float c2) {
+	return (c1==1.0)?c1:min(c2/(1.0-c1),1.0);
+}
+vec3 blend_dodge(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*vec3(blend_dodge_f(c1.x, c2.x), blend_dodge_f(c1.y, c2.y), blend_dodge_f(c1.z, c2.z)) + (1.0-opacity)*c2;
+}
+vec3 blend_lighten(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*max(c1, c2) + (1.0-opacity)*c2;
+}
+vec3 blend_darken(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*min(c1, c2) + (1.0-opacity)*c2;
+}
+vec3 blend_difference(vec2 uv, vec3 c1, vec3 c2, float opacity) {
+	return opacity*clamp(c2-c1, vec3(0.0), vec3(1.0)) + (1.0-opacity)*c2;
+}
+vec3 blend_additive(vec2 uv, vec3 c1, vec3 c2, float oppacity) {
+	return c2 + c1 * oppacity;
+}
+vec3 blend_addsub(vec2 uv, vec3 c1, vec3 c2, float oppacity) {
+	return c2 + (c1 - .5) * 2.0 * oppacity;
+}
 const float p_o8572_cx = 0.000000000;
 const float p_o8572_cy = 0.000000000;
 const float p_o8572_scale_x = 0.500000000;
@@ -628,6 +686,44 @@ const float p_o8059_cy = 0.000000000;
 const float p_o8059_rotate = 180.000000000;
 const float p_o8064_sides = 5.000000000;
 const float p_o8064_radius = 0.120000000;
+const float p_o8053_default_in1 = 0.000000000;
+const float p_o8053_default_in2 = 0.000000000;
+const float p_o8170_amount = 0.100000000;
+const float p_o8170_eps = 0.100000000;
+const float p_o8169_amount = 0.500000000;
+const float p_o8167_cx = 0.000000000;
+const float p_o8167_cy = 0.000000000;
+const float seed_o8191 = 43039.000000000;
+const float p_o8191_scale_x = 1.000000000;
+const float p_o8191_scale_y = 1.000000000;
+const float p_o8191_folds = 0.000000000;
+const float p_o8191_iterations = 2.000000000;
+const float p_o8191_persistence = 0.500000000;
+const float p_o8191_offset = 0.000000000;
+const float p_o8168_cx = 0.000000000;
+const float p_o8168_cy = 0.000000000;
+float o8170_input_d(vec2 uv, float _seed_variation_) {
+vec2 o8167_0_c = vec2(0.5+p_o8167_cx, 0.5+p_o8167_cy);float o8191_0_1_f = fbm_2d_value((rotate((uv)-o8167_0_c, (abs(sin(elapsed_time*0.2))*360.0)*0.01745329251)+o8167_0_c), vec2(p_o8191_scale_x, p_o8191_scale_y), int(p_o8191_folds), int(p_o8191_iterations), p_o8191_persistence, p_o8191_offset, seed_o8191);
+vec4 o8167_0_1_rgba = vec4(vec3(o8191_0_1_f), 1.0);
+vec2 o8168_0_c = vec2(0.5+p_o8168_cx, 0.5+p_o8168_cy);float o8191_0_4_f = fbm_2d_value((rotate((uv)-o8168_0_c, (-abs(cos(elapsed_time*0.2))*360.0)*0.01745329251)+o8168_0_c), vec2(p_o8191_scale_x, p_o8191_scale_y), int(p_o8191_folds), int(p_o8191_iterations), p_o8191_persistence, p_o8191_offset, seed_o8191);
+vec4 o8168_0_1_rgba = vec4(vec3(o8191_0_4_f), 1.0);
+vec4 o8169_0_s1 = o8167_0_1_rgba;
+vec4 o8169_0_s2 = o8168_0_1_rgba;
+float o8169_0_a = p_o8169_amount*1.0;
+vec4 o8169_0_2_rgba = vec4(blend_overlay((uv), o8169_0_s1.rgb, o8169_0_s2.rgb, o8169_0_a*o8169_0_s1.a), min(1.0, o8169_0_s2.a+o8169_0_a*o8169_0_s1.a));
+return (dot((o8169_0_2_rgba).rgb, vec3(1.0))/3.0);
+}
+vec2 o8170_slope(vec2 uv, float epsilon, float _seed_variation_) {
+	return vec2(o8170_input_d(fract(uv+vec2(epsilon, 0.0)), _seed_variation_)-o8170_input_d(fract(uv-vec2(epsilon, 0.0)), _seed_variation_), o8170_input_d(fract(uv+vec2(0.0, epsilon)), _seed_variation_)-o8170_input_d(fract(uv-vec2(0.0, epsilon)), _seed_variation_));
+}const float p_o8175_default_in1 = 0.000000000;
+const float p_o8175_default_in2 = 0.000000000;
+const float p_o8177_sides = 2.000000000;
+const float p_o8177_radius = 0.400000000;
+const float p_o8177_edge = 0.010000000;
+const float p_o8176_cx = 0.000000000;
+const float p_o8176_cy = 0.000000000;
+const float p_o8052_default_in1 = 0.000000000;
+const float p_o8052_default_in2 = 0.000000000;
 void fragment() {
 	float _seed_variation_ = variation;
 	vec2 uv = fract(UV);
@@ -657,10 +753,24 @@ float o8063_0_clamp_false = max(o8061_0_1_f,o8062_0_1_f);
 float o8063_0_clamp_true = clamp(o8063_0_clamp_false, 0.0, 1.0);
 float o8063_0_1_f = o8063_0_clamp_false;
 vec4 o8086_0_1_rgba = vec4(vec3(o8063_0_1_f), 1.0);
-float o8054_0_clamp_false = (dot((o8086_0_1_rgba).rgb, vec3(1.0))/3.0)+p_o8054_default_in2;
+vec2 o8170_0_slope = o8170_slope((o8570_0_uv/vec2(p_o8570_x, p_o8570_y)), p_o8170_eps, _seed_variation_);
+vec2 o8170_0_warp = o8170_0_slope;float o8177_0_1_f = shape_circle(((o8570_0_uv/vec2(p_o8570_x, p_o8570_y))+p_o8170_amount*o8170_0_warp), p_o8177_sides, p_o8177_radius*1.0, p_o8177_edge*1.0);
+float o8177_0_4_f = shape_circle((scale(((o8570_0_uv/vec2(p_o8570_x, p_o8570_y))+p_o8170_amount*o8170_0_warp), vec2(0.5+p_o8176_cx, 0.5+p_o8176_cy), vec2((mix(0.94,0.98,abs(sin(elapsed_time * 2.0)))), (mix(0.94,0.98,abs(sin(elapsed_time * 2.0))))))), p_o8177_sides, p_o8177_radius*1.0, p_o8177_edge*1.0);
+vec4 o8176_0_1_rgba = vec4(vec3(o8177_0_4_f), 1.0);
+float o8175_0_clamp_false = o8177_0_1_f-(dot((o8176_0_1_rgba).rgb, vec3(1.0))/3.0);
+float o8175_0_clamp_true = clamp(o8175_0_clamp_false, 0.0, 1.0);
+float o8175_0_1_f = o8175_0_clamp_true;
+vec4 o8170_0_1_rgba = vec4(vec3(o8175_0_1_f), 1.0);
+float o8052_0_clamp_false = p_o8052_default_in1+p_o8052_default_in2;
+float o8052_0_clamp_true = clamp(o8052_0_clamp_false, 0.0, 1.0);
+float o8052_0_2_f = o8052_0_clamp_true;
+float o8053_0_clamp_false = (dot((o8170_0_1_rgba).rgb, vec3(1.0))/3.0)+o8052_0_2_f;
+float o8053_0_clamp_true = clamp(o8053_0_clamp_false, 0.0, 1.0);
+float o8053_0_1_f = o8053_0_clamp_true;
+float o8054_0_clamp_false = (dot((o8086_0_1_rgba).rgb, vec3(1.0))/3.0)+o8053_0_1_f;
 float o8054_0_clamp_true = clamp(o8054_0_clamp_false, 0.0, 1.0);
-float o8054_0_2_f = o8054_0_clamp_true;
-float o8055_0_clamp_false = o8501_0_1_f+o8054_0_2_f;
+float o8054_0_1_f = o8054_0_clamp_true;
+float o8055_0_clamp_false = o8501_0_1_f+o8054_0_1_f;
 float o8055_0_clamp_true = clamp(o8055_0_clamp_false, 0.0, 1.0);
 float o8055_0_1_f = o8055_0_clamp_true;
 float o8571_0_clamp_false = floor(o8055_0_1_f/p_o8571_default_in2)*p_o8571_default_in2;
