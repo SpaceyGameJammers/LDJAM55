@@ -12,7 +12,6 @@ func _ready():
 func _process(_delta):
 	progress_bar.visible = progress_bar.value != 0 and progress_bar.value != progress_bar.max_value
 	food_icon.visible = progress_bar.value == progress_bar.max_value
-	print_debug(progress_bar.value - progress_bar.max_value)
 	if progress_bar.value < progress_bar.max_value:
 		progress_bar.value = ceil((1 - (timer.time_left / timer.wait_time)) * progress_bar.max_value)
 
