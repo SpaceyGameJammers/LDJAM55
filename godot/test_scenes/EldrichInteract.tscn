@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://def0qar7n3esb"]
+
+[ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="1_fbkqk"]
+[ext_resource type="Script" path="res://scenes/UI/selection_wheel.gd" id="2_87xer"]
+[ext_resource type="Texture2D" uid="uid://bonmow7dt2bso" path="res://graphics/sprites/spr_tileset_floor.png" id="3_sqid5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_28kma"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iagbw"]
+atlas = ExtResource("3_sqid5")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61m22"]
+atlas = ExtResource("3_sqid5")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8abs6"]
+atlas = ExtResource("3_sqid5")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7nnp"]
+atlas = ExtResource("3_sqid5")
+region = Rect2(16, 16, 16, 16)
+
+[node name="EldrichInteract" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_28kma")
+
+[node name="Icon" type="Sprite2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("1_fbkqk")
+
+[node name="SelectionWheel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+pivot_offset = Vector2(24, 24)
+script = ExtResource("2_87xer")
+bkg_color = Color(0.431373, 0.592157, 0.8, 1)
+line_color = Color(1, 1, 1, 1)
+highlight_color = Color(0, 0, 0, 0.34902)
+options = Array[AtlasTexture]([SubResource("AtlasTexture_iagbw"), SubResource("AtlasTexture_61m22"), SubResource("AtlasTexture_8abs6"), SubResource("AtlasTexture_f7nnp")])

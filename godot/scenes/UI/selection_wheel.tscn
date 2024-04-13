@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://dchj3175uk1lq"]
+
+[ext_resource type="Script" path="res://scenes/UI/selection_wheel.gd" id="1_k1d6c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo1of"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e18d8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_viv7s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eb55m"]
+
+[node name="SelectionWheel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_k1d6c")
+bkg_color = Color(0.27451, 0.27451, 0.27451, 0.560784)
+line_color = Color(0.733333, 0.733333, 0.733333, 0.709804)
+highlight_color = Color(0.596078, 0.596078, 0.596078, 0.32549)
+options = Array[AtlasTexture]([SubResource("AtlasTexture_mo1of"), SubResource("AtlasTexture_e18d8"), SubResource("AtlasTexture_viv7s"), SubResource("AtlasTexture_eb55m")])
