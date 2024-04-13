@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed = 2000
+@export var speed = 4000
 @onready var interaction_area = $InteractionArea
 var interactables:Array = []
 var interacting_object = null
@@ -12,11 +12,10 @@ func _physics_process(delta):
 		input_vector = Vector2.ZERO
 	velocity = delta * input_vector * speed
 	if input_vector != Vector2.ZERO:
-		print_debug(input_vector)
 		interaction_area.rotation = input_vector.angle() if not (abs(input_vector.y) >= 0.1 and abs(input_vector.y) <= 0.9) else (Vector2(1,0) * sign(input_vector.x)).angle()
 	move_and_slide()
 
-func _process(delta):
+func _process(_delta):
 	if interacting_object == null and Input.is_action_pressed("interact") and not interactables.is_empty():
 		for interactable in interactables: #Find the closest interactable object
 			if interacting_object == null or global_position.distance_squared_to(interacting_object.global_position) > global_position.distance_squared_to(interactable.global_position):
