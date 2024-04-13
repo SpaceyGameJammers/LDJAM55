@@ -1,5 +1,5 @@
 ![godot-gamejam](logo.png)
-TEST!!!
+
 **🤖 Godot Engine 4.0 template to better get started for game jams with your game!**
 
 ![](https://img.shields.io/badge/Godot%20Compatible-4.0%2B-%234385B5) [![](https://img.shields.io/discord/785246324793540608.svg?label=&logo=discord&logoColor=ffffff&color=7389D8&labelColor=6A7EC2)](https://discord.com/invite/CKBuE5djXe)
