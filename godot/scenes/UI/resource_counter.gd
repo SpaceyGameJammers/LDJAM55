@@ -8,3 +8,7 @@ extends HBoxContainer
 
 func _ready():
 	resource_label.text = resource_name + ":"
+	ResourceManager.money_update.connect(update_amount)
+
+func update_amount(amount):
+	counter_label.text = str(amount)
