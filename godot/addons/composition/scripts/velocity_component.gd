@@ -4,6 +4,7 @@ class_name VelocityComponent2D
 @export var max_speed: float = 10.0
 @export var acceleration_coefficient: float = 0.1
 @export var debug: bool = false
+@export var CharacterBody:CharacterBody2D
 
 var velocity: Vector2
 var acceleration_coefficient_multiplier: float = 1.0
@@ -27,7 +28,7 @@ func maximize_velocity(Direction:Vector2):
 func decelerate():
 	accelerate_to_velocity(Vector2.ZERO)
 
-func move(CharacterBody:CharacterBody2D):
+func move():
 	CharacterBody.velocity = velocity
 	CharacterBody.move_and_slide()
 

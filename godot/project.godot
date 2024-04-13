@@ -97,7 +97,13 @@ pause={
 
 locale/translations=PackedStringArray("res://i18n/translation.de.translation", "res://i18n/translation.en.translation")
 
+[layer_names]
+
+2d_physics/layer_1="Terrain"
+2d_navigation/layer_1="Walkable"
+
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 environment/defaults/default_clear_color=Color(0.211765, 0.239216, 0.321569, 1)
