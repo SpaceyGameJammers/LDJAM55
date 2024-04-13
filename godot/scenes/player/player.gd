@@ -28,9 +28,9 @@ func _process(_delta):
 		for interactable in interactables: #Find the closest interactable object
 			if interacting_object == null or global_position.distance_squared_to(interacting_object.global_position) > global_position.distance_squared_to(interactable.global_position):
 				interacting_object = interactable
-		interacting_object.start_interact()
+		interacting_object.start_worker_interact()
 	if interacting_object != null and Input.is_action_just_released("interact"):
-		interacting_object.stop_interact()
+		interacting_object.stop_worker_interact()
 		interacting_object = null
 
 func _on_interaction_area_area_entered(area):

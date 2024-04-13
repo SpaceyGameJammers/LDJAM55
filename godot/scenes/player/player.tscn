@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://dqo228kijng4g"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_lmu2r"]
-[ext_resource type="Texture2D" uid="uid://dl11qlcf2vvd1" path="res://graphics/sprites/characters/character_player.png" id="2_kwwf0"]
+[ext_resource type="Texture2D" uid="uid://dl11qlcf2vvd1" path="res://graphics/sprites/characters/spr_character_player.png" id="2_kwwf0"]
 [ext_resource type="PackedScene" uid="uid://d3l4cndthktrj" path="res://scenes/UI/UI.tscn" id="3_tbic2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pom20"]
@@ -273,7 +273,6 @@ shape = SubResource("RectangleShape2D_urwfg")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="UI" parent="Camera2D" instance=ExtResource("3_tbic2")]
-visible = false
 
 [connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
 [connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]
