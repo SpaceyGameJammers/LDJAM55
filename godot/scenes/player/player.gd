@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export var speed = 4000
 @onready var interaction_area = $InteractionArea
-@onready var animation_tree = $AnimationTree
 var interactables:Array = []
 var interacting_object = null
 
@@ -11,12 +10,7 @@ func _physics_process(delta):
 	if interacting_object != null: #If interacting don't move
 		input_vector = Vector2.ZERO
 	
-	if input_vector != Vector2.ZERO: #Animation
-		animation_tree.set("parameters/Idle/blend_position", input_vector)
-		animation_tree.set("parameters/Walk/blend_position", input_vector)
-		animation_tree.get("parameters/playback").travel("Walk")
-	else:
-		animation_tree.get("parameters/playback").travel("Idle")
+	$HumanRenderer.update_direction(input_vector)
 	
 	velocity = delta * input_vector * speed
 	if input_vector != Vector2.ZERO:
