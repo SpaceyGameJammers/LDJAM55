@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=10 format=3 uid="uid://bsb5g7q5uviho"]
 
-[ext_resource type="Texture2D" uid="uid://dennw7k0kokxi" path="res://graphics/sprites/spr_tileset_counter_wooden.png" id="1_et4gl"]
-[ext_resource type="Texture2D" uid="uid://bniwlf4hp7g5u" path="res://graphics/sprites/spr_tileset_counter_metal.png" id="2_pfog3"]
-[ext_resource type="Texture2D" uid="uid://bonmow7dt2bso" path="res://graphics/sprites/spr_tileset_floor.png" id="3_1w8ju"]
+[ext_resource type="Texture2D" uid="uid://dennw7k0kokxi" path="res://graphics/sprites/tilesets/spr_tileset_counter_wooden.png" id="1_ibreg"]
+[ext_resource type="Texture2D" uid="uid://bniwlf4hp7g5u" path="res://graphics/sprites/tilesets/spr_tileset_counter_metal.png" id="2_dvuu1"]
+[ext_resource type="Texture2D" uid="uid://bonmow7dt2bso" path="res://graphics/sprites/tilesets/spr_tileset_floor.png" id="3_jrndy"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_itqix"]
 vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
@@ -13,7 +13,7 @@ agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_adbsv"]
 resource_name = "wooden"
-texture = ExtResource("1_et4gl")
+texture = ExtResource("1_ibreg")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
@@ -164,7 +164,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_do205"]
 resource_name = "metal"
-texture = ExtResource("2_pfog3")
+texture = ExtResource("2_dvuu1")
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 1
@@ -306,7 +306,7 @@ source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 0.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_atmun"]
-texture = ExtResource("3_1w8ju")
+texture = ExtResource("3_jrndy")
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0

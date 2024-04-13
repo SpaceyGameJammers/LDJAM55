@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://drw0865onnspm"]
+[gd_scene load_steps=10 format=3 uid="uid://drw0865onnspm"]
 
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="1_nv4dk"]
 [ext_resource type="Script" path="res://scenes/entity/entity.gd" id="1_tgt6x"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2xu5h"]
-radius = 16.0312
+[ext_resource type="Script" path="res://addons/sten_finite_state_machine/scripts/state_machine.gd" id="3_ykk51"]
+[ext_resource type="Script" path="res://scenes/entity/TargetState.gd" id="4_jbqcy"]
+[ext_resource type="Script" path="res://scenes/entity/InteractState.gd" id="5_nr2h0"]
+[ext_resource type="Script" path="res://scenes/entity/WaitState.gd" id="6_ptv5j"]
+[ext_resource type="Script" path="res://scenes/entity/WalkState.gd" id="7_ttbvi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvb4f"]
 radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2xu5h"]
+radius = 16.0312
 
 [node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent")]
 light_mask = 2
@@ -16,23 +21,44 @@ script = ExtResource("1_tgt6x")
 nav_agent = NodePath("NavigationAgent2D")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 10.0
+target_desired_distance = 0.1
 debug_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_nv4dk")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cvb4f")
+
 [node name="Interact" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
 shape = SubResource("CircleShape2D_2xu5h")
-disabled = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_cvb4f")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
 autostart = true
 
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("3_ykk51")
+initial_state = NodePath("TargetState")
+
+[node name="TargetState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
+script = ExtResource("4_jbqcy")
+character = NodePath("../..")
+
+[node name="InteractState" type="Node" parent="StateMachine"]
+script = ExtResource("5_nr2h0")
+
+[node name="WaitState" type="Node" parent="StateMachine"]
+script = ExtResource("6_ptv5j")
+
+[node name="WalkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "nav_agent")]
+script = ExtResource("7_ttbvi")
+character = NodePath("../..")
+nav_agent = NodePath("../../NavigationAgent2D")
+
+[connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
