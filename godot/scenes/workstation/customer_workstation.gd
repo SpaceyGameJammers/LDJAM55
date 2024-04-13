@@ -8,7 +8,7 @@ func get_customer_position(): #Returns the position that the customer should aim
 	return customer_position.global_position
 
 func customer_interact(customer):
-	current_customer = current_customer
+	current_customer = customer
 
 func _process(_delta):
 	if current_customer != null and worker_interacting:
