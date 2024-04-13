@@ -1,0 +1,84 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3l4cndthktrj"]
+
+[ext_resource type="PackedScene" uid="uid://bynxq8d6nsilk" path="res://scenes/UI/resource_counter.tscn" id="1_2c3mr"]
+[ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_whslc"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+offset_right = 72.0
+grow_vertical = 0
+color = Color(0.576471, 0.231373, 0, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.111
+anchor_top = 0.08
+anchor_right = 0.889
+anchor_bottom = 0.96
+offset_left = 0.00799942
+offset_top = -0.320001
+offset_right = -0.00800323
+offset_bottom = -3.84
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.403922, 0.403922, 0.403922, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MeatCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+layout_mode = 2
+resource_name = "Meat"
+
+[node name="FishCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+layout_mode = 2
+resource_name = "Fish"
+
+[node name="VegetablesCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+layout_mode = 2
+resource_name = "Vegetables"
+
+[node name="BreadCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+layout_mode = 2
+resource_name = "Bread"
+
+[node name="WaterCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+layout_mode = 2
+resource_name = "Water"
+
+[node name="RankingProgress" type="TextureProgressBar" parent="Control"]
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+value = 60.0
+texture_progress = ExtResource("2_whslc")
+
+[node name="MoneyCounter" parent="Control" instance=ExtResource("1_2c3mr")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -47.0
+offset_bottom = 12.0
+grow_horizontal = 0
+resource_name = "Money"

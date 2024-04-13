@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bynxq8d6nsilk"]
+
+[ext_resource type="Script" path="res://scenes/UI/resource_counter.gd" id="1_c2wfl"]
+
+[node name="ResourceCounter" type="HBoxContainer"]
+script = ExtResource("1_c2wfl")
+
+[node name="Resource" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Resource:"
+
+[node name="Counter" type="Label" parent="."]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "0"
