@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bnn5ss214183k"]
 
-[ext_resource type="Script" path="res://test_assets/Interactable.gd" id="1_btfxk"]
+[ext_resource type="Script" path="res://test_scenes/Interactable.gd" id="1_btfxk"]
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_baktx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8vje"]
