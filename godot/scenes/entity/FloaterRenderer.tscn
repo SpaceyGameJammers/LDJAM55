@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bm3ubepqjd0cr"]
+[gd_scene load_steps=8 format=3 uid="uid://be2xy70hy8f8c"]
 
 [ext_resource type="Script" path="res://scenes/entity/FloaterRenderer.gd" id="1_putok"]
 [ext_resource type="Texture2D" uid="uid://bae2w86l36w3h" path="res://graphics/sprites/characters/spr_character_floater.png" id="1_tmvp6"]
@@ -45,4 +45,5 @@ script = ExtResource("1_putok")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
 sprite_frames = SubResource("SpriteFrames_ewyds")
+autoplay = "default"
 frame_progress = 0.20898

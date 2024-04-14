@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://6l1j6pp11obi" path="res://audio/song1.wav" id="7_of82o"]
 [ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="9_b0mre"]
 [ext_resource type="PackedScene" uid="uid://bnfydsxrbkg6i" path="res://scenes/summoning_circle/summoning_circle.tscn" id="10_an6ee"]
-[ext_resource type="Script" path="res://test_scenes/Music.gd" id="10_hkj1i"]
+[ext_resource type="Texture2D" uid="uid://bae2w86l36w3h" path="res://graphics/sprites/characters/spr_character_floater.png" id="11_yrvni"]
 
 [node name="Test" type="Node2D"]
 y_sort_enabled = true
@@ -35,12 +35,13 @@ position = Vector2(40, 144)
 
 [node name="Entity" parent="." node_paths=PackedStringArray("leave") instance=ExtResource("6_g4w3l")]
 position = Vector2(129, 212)
-occupation = 2
+occupation = 3
 leave = NodePath("../Leave")
 sprite_sheet = ExtResource("9_b0mre")
 
 [node name="Entity2" parent="." instance=ExtResource("6_g4w3l")]
 position = Vector2(197, 157)
+occupation = 1
 sprite_sheet = ExtResource("7_58ytm")
 
 [node name="Leave" type="Node2D" parent="."]
@@ -54,3 +55,4 @@ script = ExtResource("10_hkj1i")
 
 [node name="SummoningCircle" parent="." instance=ExtResource("10_an6ee")]
 position = Vector2(-104, 120)
+sprites = Array[Texture2D]([ExtResource("7_58ytm"), ExtResource("9_b0mre"), ExtResource("11_yrvni")])
