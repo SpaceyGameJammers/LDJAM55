@@ -1,16 +1,26 @@
-[gd_scene load_steps=2 format=3 uid="uid://bynxq8d6nsilk"]
+[gd_scene load_steps=5 format=3 uid="uid://bynxq8d6nsilk"]
 
 [ext_resource type="Script" path="res://scenes/UI/resource_counter.gd" id="1_c2wfl"]
+[ext_resource type="Texture2D" uid="uid://2wi1y7opuhsa" path="res://graphics/sprites/UI/spr_gui_icon_resources.png" id="2_cfpe0"]
+[ext_resource type="FontFile" uid="uid://dwqqpio6ubqww" path="res://ui/fnt_i_pixel_u.ttf" id="3_67s0a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmuqv"]
+resource_local_to_scene = true
+atlas = ExtResource("2_cfpe0")
+region = Rect2(0, 0, 8, 8)
 
 [node name="ResourceCounter" type="HBoxContainer"]
+theme_override_constants/separation = 1
 script = ExtResource("1_c2wfl")
 
-[node name="Resource" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
-theme_override_font_sizes/font_size = 8
-text = "Resource:"
+texture = SubResource("AtlasTexture_wmuqv")
+stretch_mode = 3
 
 [node name="Counter" type="Label" parent="."]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("3_67s0a")
 theme_override_font_sizes/font_size = 8
-text = "0"
+text = ":0"
+vertical_alignment = 1
