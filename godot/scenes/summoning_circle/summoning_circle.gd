@@ -1,3 +1,4 @@
+@tool
 extends Area2D
 
 var summoning_song: AudioStream = load("res://audio/summon_song.wav")
@@ -7,11 +8,11 @@ var accessable = false
 @onready var ring1_img = $Ring1Albedo
 @onready var ring2_img = $Ring2Albedo
 @onready var hex_img = $HexAlbedo
-@export var eldriches: Array[PackedScene]
+var eldrich_scene: PackedScene = load("res://scenes/entity/entity.tscn")
 @export var sprites: Array[Texture2D]
 
 var rotation_speed = 1
-var img_rotation = PI / 261.375
+var img_rotation = PI/1.795
 var floatrender = preload("res://scenes/entity/FloaterRenderer.tscn")
 
 func _ready():
@@ -35,7 +36,7 @@ func end_summoning(eldrich_id):
 	if eldrich_id == 0:
 		return
 	MusicManager.change_music(summoning_song)
-	var eldirch = eldriches[eldrich_id - 1].instantiate()
+	var eldirch = eldrich_scene.instantiate()
 	print_debug(eldrich_id)
 	if eldrich_id - 1 == 2:
 		eldirch.human_renderer.queue_free()
@@ -50,8 +51,8 @@ func end_summoning(eldrich_id):
 
 func _process(delta):
 	if OS.has_feature("web"):
-		ring1_img.rotate(-rotation_speed * img_rotation)
-		ring2_img.rotate(rotation_speed * img_rotation)
+		ring1_img.rotate(-rotation_speed * img_rotation * delta)
+		ring2_img.rotate(rotation_speed * img_rotation * delta)
 
 func _input(event:InputEvent):
 	if accessable and event.is_action_pressed("interact"):

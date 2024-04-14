@@ -11,8 +11,8 @@ func update_direction(direction : Vector2):
 	else:
 		$AnimatedSprite2D.scale.x = 1
 
-func set_texture(texture: Texture2D):
+func set_texture(_texture: Texture2D):
 	pass
 
-func sit(direction : Vector2):
+func sit(_direction : Vector2):
 	pass

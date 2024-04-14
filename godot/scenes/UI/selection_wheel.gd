@@ -3,7 +3,7 @@ extends Control
 
 signal option_selected(option:int)
 
-const SPRITE_SIZE = Vector2(16, 16)
+const SPRITE_SIZE = Vector2(16, 24)
 
 @export var bkg_color: Color
 @export var line_color: Color
@@ -54,7 +54,7 @@ func _process(_delta):
 	if (mouse_radius < inner_radius and not controller_active) or (controller_active and controller_direction.distance_squared_to(Vector2.ZERO) < 0.01):
 		selection = 0
 	else:
-		var mouse_rads = fposmod((-mouse_pos.angle() if not controller_active else controller_direction.angle()) + PI/2, TAU)
+		var mouse_rads = fposmod((mouse_pos.angle() if not controller_active else controller_direction.angle()) + PI/2, TAU)
 		selection = ceil((mouse_rads / TAU) * (len(option_images) - 1))
 	queue_redraw()
 
