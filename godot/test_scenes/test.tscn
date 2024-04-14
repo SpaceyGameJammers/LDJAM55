@@ -35,6 +35,9 @@ position = Vector2(136, 168)
 [node name="WorkstationSink" parent="." instance=ExtResource("12_s0mn4")]
 position = Vector2(232, 40)
 
+[node name="WorkstationFryer" parent="." instance=ExtResource("13_1gb5a")]
+position = Vector2(200, 40)
+
 [node name="Player" parent="." instance=ExtResource("2_0r2fj")]
 position = Vector2(40, 144)
 
@@ -60,6 +63,3 @@ bus = &"Music"
 [node name="SummoningCircle" parent="." instance=ExtResource("10_an6ee")]
 position = Vector2(-104, 120)
 sprites = Array[Texture2D]([ExtResource("7_58ytm"), ExtResource("9_b0mre"), ExtResource("11_yrvni")])
-
-[node name="WorkstationFryer" parent="." instance=ExtResource("13_1gb5a")]
-position = Vector2(200, 40)
