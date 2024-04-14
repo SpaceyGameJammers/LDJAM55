@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4jdxqv5piu1u"]
+[gd_scene load_steps=7 format=3 uid="uid://d4jdxqv5piu1u"]
 
 [ext_resource type="Script" path="res://scenes/workstation/workstation_pot.gd" id="1_qkf6k"]
 [ext_resource type="Texture2D" uid="uid://cx4w37wuj6xem" path="res://graphics/sprites/workstations/spr_workstation_pot.png" id="1_tm0hr"]
+[ext_resource type="Texture2D" uid="uid://lcbat3gtw20f" path="res://graphics/sprites/UI/spr_gui_workstation_progressbar_background.png" id="3_lfqxm"]
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="3_v75qs"]
+[ext_resource type="Texture2D" uid="uid://uvt1hhrvlg8u" path="res://graphics/sprites/UI/spr_gui_workstation_progressbar.png" id="4_h75ss"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_en76p"]
 size = Vector2(16, 16)
@@ -22,15 +24,14 @@ offset = Vector2(0, -0.5)
 hframes = 3
 frame = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 visible = false
-modulate = Color(0, 1, 0, 1)
 offset_left = -8.0
 offset_top = -17.0
 offset_right = 8.0
 offset_bottom = -13.0
-theme_override_font_sizes/font_size = 11
-show_percentage = false
+texture_under = ExtResource("3_lfqxm")
+texture_progress = ExtResource("4_h75ss")
 
 [node name="Timer" type="Timer" parent="."]
 
