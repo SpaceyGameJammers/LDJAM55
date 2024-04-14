@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3l4cndthktrj"]
+[gd_scene load_steps=5 format=3 uid="uid://d3l4cndthktrj"]
 
 [ext_resource type="PackedScene" uid="uid://bynxq8d6nsilk" path="res://scenes/UI/resource_counter.tscn" id="1_2c3mr"]
+[ext_resource type="Texture2D" uid="uid://c4vbh6mc44nft" path="res://graphics/sprites/UI/spr_gui_nslice_frame.png" id="1_r35ui"]
 [ext_resource type="Texture2D" uid="uid://bchppwoha2kwq" path="res://graphics/sprites/UI/spr_gui_stars_background.png" id="2_wp8ng"]
 [ext_resource type="Texture2D" uid="uid://byj0qvt8y4v40" path="res://graphics/sprites/UI/spr_gui_stars.png" id="3_8jxvm"]
 
@@ -39,33 +40,51 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.403922, 0.403922, 0.403922, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect/ColorRect"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+layout_mode = 0
+offset_top = 220.0
+offset_right = 72.0
+offset_bottom = 324.0
+texture = ExtResource("1_r35ui")
+patch_margin_left = 7
+patch_margin_top = 7
+patch_margin_right = 7
+patch_margin_bottom = 7
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
 
-[node name="MeatCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/NinePatchRect/MarginContainer"]
 layout_mode = 2
-resource_name = "Meat"
+theme_override_constants/separation = 0
 
-[node name="FishCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+[node name="MeatCounter" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("1_2c3mr")]
 layout_mode = 2
-resource_name = "Fish"
 
-[node name="VegetablesCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+[node name="FishCounter" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("1_2c3mr")]
 layout_mode = 2
-resource_name = "Vegetables"
+resource_icon = 1
 
-[node name="BreadCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+[node name="VegetablesCounter" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("1_2c3mr")]
 layout_mode = 2
-resource_name = "Bread"
+resource_icon = 3
 
-[node name="WaterCounter" parent="Control/ColorRect/ColorRect/VBoxContainer" instance=ExtResource("1_2c3mr")]
+[node name="BreadCounter" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("1_2c3mr")]
 layout_mode = 2
-resource_name = "Water"
+resource_icon = 4
+
+[node name="WaterCounter" parent="Control/NinePatchRect/MarginContainer/VBoxContainer" instance=ExtResource("1_2c3mr")]
+layout_mode = 2
+resource_icon = 6
 
 [node name="RankingProgress" type="TextureProgressBar" parent="Control"]
 layout_mode = 0
@@ -83,4 +102,5 @@ anchor_right = 1.0
 offset_left = -47.0
 offset_bottom = 12.0
 grow_horizontal = 0
-resource_name = "Money"
+resource_icon = 7
+reverse_layout = true
