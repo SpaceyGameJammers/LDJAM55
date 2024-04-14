@@ -10,6 +10,8 @@ class_name Entity
 @export var eat: Node2D
 @export var leave: Node2D
 
+@onready var wait_timer: Timer = $WaitTimer
+
 enum INTERACTION { ORDER, REGISTER, EAT, WALK, WAIT, COOK_POT, LEAVE, RATE, PAY, TABLE }
 enum OCCUPATION { REGISTER, CHEF, CUSTOMER }
 

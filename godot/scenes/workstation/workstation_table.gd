@@ -7,4 +7,3 @@ func _process(delta):
 		food_icon.visible = true
 	else:
 		food_icon.visible = false
-	super._process(delta)

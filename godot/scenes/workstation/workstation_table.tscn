@@ -37,4 +37,4 @@ texture = ExtResource("3_80sfx")
 texture = ExtResource("4_ua00i")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
+wait_time = 2.0
