@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://6l1j6pp11obi" path="res://audio/song1.wav" id="7_of82o"]
 [ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="9_b0mre"]
 [ext_resource type="PackedScene" uid="uid://bnfydsxrbkg6i" path="res://scenes/summoning_circle/summoning_circle.tscn" id="10_an6ee"]
+[ext_resource type="Script" path="res://scripts/music.gd" id="10_soctw"]
 [ext_resource type="Texture2D" uid="uid://bae2w86l36w3h" path="res://graphics/sprites/characters/spr_character_floater.png" id="11_yrvni"]
 [ext_resource type="PackedScene" uid="uid://bl5f85rptdnnx" path="res://scenes/workstation/workstation_sink.tscn" id="12_s0mn4"]
 [ext_resource type="PackedScene" uid="uid://clrwyrlx5818k" path="res://scenes/workstation/workstation_fryer.tscn" id="13_1gb5a"]
@@ -59,6 +60,7 @@ position = Vector2(128, 271)
 stream = ExtResource("7_of82o")
 autoplay = true
 bus = &"Music"
+script = ExtResource("10_soctw")
 
 [node name="SummoningCircle" parent="." instance=ExtResource("10_an6ee")]
 position = Vector2(-104, 120)

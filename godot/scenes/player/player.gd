@@ -14,7 +14,8 @@ func _physics_process(delta):
 	
 	velocity = delta * input_vector * speed
 	if input_vector != Vector2.ZERO:
-		interaction_area.rotation = input_vector.angle() if not (abs(input_vector.y) >= 0.1 and abs(input_vector.y) <= 0.9) else (Vector2(1,0) * sign(input_vector.x)).angle()
+		
+		interaction_area.rotation = roundf(input_vector.angle()/(PI/2)) * PI/2 if not is_equal_approx(absf(input_vector.x), absf(input_vector.y)) else Vector2(sign(input_vector.x), 0).angle()#floorf((input_vector.angle()+(PI/4))/(PI/2)) * PI/2
 	move_and_slide()
 
 func _process(_delta):
