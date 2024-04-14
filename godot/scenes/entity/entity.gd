@@ -19,7 +19,6 @@ var targets = [
 	INTERACTION.PAY,
 	INTERACTION.LEAVE,
 	INTERACTION.COOK_POT,
-	INTERACTION.COOK_POT,
 ]
 
 #func _physics_process(_delta):

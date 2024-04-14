@@ -10,18 +10,14 @@ var timer:Timer
 var workstation:Workstation
 
 func enter(_msg := {}):
-	timer = Timer.new()
-	add_child(timer)
 	workstation = _msg["station"]
 	if workstation:
 		workstation.start_worker_interact()
-	timer.timeout.connect(_on_timer_timeout)
-	timer.wait_time = 2.0
-	timer.start()
+		workstation.work_done.connect(_on_timer_timeout)
+	else:
+		state_machine.transition_to("TargetState", {})
 
 func _on_timer_timeout():
-	remove_child(timer)
-	timer.queue_free()
 	state_machine.transition_to("TargetState", {})
 
 func exit():
