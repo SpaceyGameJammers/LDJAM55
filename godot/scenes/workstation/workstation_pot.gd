@@ -15,7 +15,6 @@ func _ready():
 	timer.timeout.connect(_on_timer_timeout)
 
 func _process(_delta):
-	print(progress_bar.value)
 	progress_bar.value = ceil((1 - (timer.time_left / timer.wait_time)) * progress_bar.max_value)
 
 func start_worker_interact():
