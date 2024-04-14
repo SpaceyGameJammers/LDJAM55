@@ -2,10 +2,10 @@
 
 [ext_resource type="TileSet" uid="uid://bsb5g7q5uviho" path="res://graphics/tilesets/tset_resturant.tres" id="1_sqdk3"]
 [ext_resource type="PackedScene" uid="uid://dqo228kijng4g" path="res://scenes/player/player.tscn" id="2_0r2fj"]
-[ext_resource type="PackedScene" uid="uid://wbrth2yl08hc" path="res://scenes/workstation/workstation_table.tscn" id="5_fdjni"]
+[ext_resource type="PackedScene" uid="uid://bmr1snd4twg1l" path="res://scenes/workstation/workstation_table.tscn" id="5_fdjni"]
 [ext_resource type="PackedScene" uid="uid://d4jdxqv5piu1u" path="res://scenes/workstation/workstation_pot.tscn" id="5_fk5mj"]
 [ext_resource type="PackedScene" uid="uid://drw0865onnspm" path="res://scenes/entity/entity.tscn" id="6_g4w3l"]
-[ext_resource type="PackedScene" uid="uid://b2pspr110xenm" path="res://scenes/workstation/workstation_register.tscn" id="6_reber"]
+[ext_resource type="PackedScene" uid="uid://bpobdb1f3niod" path="res://scenes/workstation/workstation_register.tscn" id="6_reber"]
 
 [node name="Test" type="Node2D"]
 y_sort_enabled = true
