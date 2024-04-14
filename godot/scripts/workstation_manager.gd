@@ -5,7 +5,6 @@ var workstations: Dictionary = {}
 var customer_workstations: Dictionary = {}
 
 func add_workstation(type: WORKSTATION, workstation:Workstation):
-	print("Add " + str(type))
 	if workstations.has(type):
 		workstations[type].append(workstation)
 	else:

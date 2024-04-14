@@ -9,7 +9,7 @@ var type: Interaction.types
 var station: Node2D
 
 func enter(_msg := {}):
-	nav_agent.target_position = _msg["target"] 
+	nav_agent.target_position = _msg["target"]
 	type = _msg["type"]
 	station = _msg["station"]
 	if !nav_agent.navigation_finished.is_connected(_on_finished):
@@ -24,8 +24,6 @@ func physics_update(_delta:float):
 	character.move_and_slide()
 
 func _on_finished():
-	character.human_renderer.update_direction(Vector2.ZERO)
-	nav_agent.velocity = Vector2.ZERO
 	if type == character.INTERACTION.LEAVE:
 		character.queue_free()
 	else:
