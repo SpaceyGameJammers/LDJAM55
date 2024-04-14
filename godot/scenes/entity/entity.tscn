@@ -50,11 +50,13 @@ initial_state = NodePath("TargetState")
 script = ExtResource("4_jbqcy")
 character = NodePath("../..")
 
-[node name="InteractState" type="Node" parent="StateMachine"]
+[node name="InteractState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("5_nr2h0")
+character = NodePath("../..")
 
-[node name="WaitState" type="Node" parent="StateMachine"]
+[node name="WaitState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character")]
 script = ExtResource("6_ptv5j")
+character = NodePath("../..")
 
 [node name="WalkState" type="Node" parent="StateMachine" node_paths=PackedStringArray("character", "nav_agent")]
 script = ExtResource("7_ttbvi")

@@ -8,15 +8,31 @@ func enter(_msg := {}):
 	var type
 	var station:Workstation
 	
+	if character.targets.is_empty():
+		match character.occupation:
+			character.OCCUPATION.CUSTOMER:
+				character.targets = character.customer
+			character.OCCUPATION.REGISTER:
+				character.targets = character.register
+		print(str(character.targets))
+	
 	if !character.targets.is_empty():
 		while type == null or target == null:
 			match character.targets[0]:
 				character.INTERACTION.ORDER:
+					station = WorkstationManager.occupy_customer_workstation(WorkstationManager.WORKSTATION.REGISTER)
 					type = character.INTERACTION.ORDER
-					target = character.order.global_position
-				character.INTERACTION.EAT:
-					type = character.INTERACTION.EAT
-					target = character.eat.global_position
+					if station:
+						target = station.get_customer_position()
+					else:
+						print("No register found")
+				character.INTERACTION.WAIT:
+					station = WorkstationManager.occupy_customer_workstation(WorkstationManager.WORKSTATION.TABLE)
+					type = character.INTERACTION.WAIT
+					if station:
+						target = station.get_customer_position()
+					else:
+						print("No table found")
 				character.INTERACTION.LEAVE:
 					type = character.INTERACTION.LEAVE
 					target = character.leave.global_position
@@ -28,12 +44,13 @@ func enter(_msg := {}):
 			
 			character.targets.remove_at(0)
 		
-		state_machine.transition_to("WalkState", 
-		{ 
-			"type": type, 
-			"target": target, 
-			"station": station 
-		})
+		if target:
+			state_machine.transition_to("WalkState", 
+			{ 
+				"type": type, 
+				"target": target, 
+				"station": station 
+			})
 
 func exit():
 	character.pathing = true

@@ -24,3 +24,5 @@ position = Vector2(0, 16)
 [node name="SprWorkstationRegister" type="Sprite2D" parent="."]
 position = Vector2(0, -2)
 texture = ExtResource("2_ew3wu")
+
+[node name="Timer" type="Timer" parent="."]

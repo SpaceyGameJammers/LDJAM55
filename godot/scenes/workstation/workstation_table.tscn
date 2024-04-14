@@ -35,3 +35,6 @@ texture = ExtResource("3_80sfx")
 
 [node name="SprWorkstationTable" type="Sprite2D" parent="."]
 texture = ExtResource("4_ua00i")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
