@@ -12,7 +12,6 @@ func _ready():
 
 func start_worker_interact():
 	worker_interacting = true
-	print("HERE2")
 
 func stop_worker_interact():
 	worker_interacting = false

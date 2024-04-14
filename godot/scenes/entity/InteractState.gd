@@ -25,6 +25,9 @@ func enter(_msg := {}):
 		character.wait_timer.timeout.connect(_on_wait_over)
 		character.wait_timer.start()
 
+func physics_update(_delta:float):
+	character.human_renderer.update_direction(Vector2.ZERO)
+
 func _on_wait_over():
 	state_machine.transition_to("TargetState", {"state": "mad"})
 
