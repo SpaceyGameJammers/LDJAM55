@@ -16,7 +16,8 @@ func enter(_msg := {}):
 	target = _msg["target"]
 	character.position = target
 	if workstation:
-		workstation.work_done.connect(_on_timer_timeout)
+		if workstation.work_done.is_connected(_on_timer_timeout):
+			workstation.work_done.connect(_on_timer_timeout)
 		if character.occupation == character.OCCUPATION.CUSTOMER:
 			workstation.customer_interact(character)
 		else:
@@ -28,13 +29,14 @@ func enter(_msg := {}):
 		character.wait_timer.start()
 
 func physics_update(_delta:float):
-	if character.occupation == character.OCCUPATION.CUSTOMER:
-		character.human_renderer.update_direction((workstation.global_position - workstation.get_customer_position()).normalized())
-	else:
-		character.human_renderer.update_direction((workstation.global_position - workstation.get_worker_position()).normalized())
-	character.human_renderer.update_direction(Vector2.ZERO)
-	if type == character.INTERACTION.WAIT:
-		character.human_renderer.sit((workstation.global_position - workstation.get_customer_position()).normalized())
+	if character.human_renderer == null:
+		if character.occupation == character.OCCUPATION.CUSTOMER:
+			character.human_renderer.update_direction((workstation.global_position - workstation.get_customer_position()).normalized())
+		else:
+			character.human_renderer.update_direction((workstation.global_position - workstation.get_worker_position()).normalized())
+		character.human_renderer.update_direction(Vector2.ZERO)
+		if type == character.INTERACTION.WAIT:
+			character.human_renderer.sit((workstation.global_position - workstation.get_customer_position()).normalized())
 
 func _on_wait_over():
 	state_machine.transition_to("TargetState", {"state": "mad"})

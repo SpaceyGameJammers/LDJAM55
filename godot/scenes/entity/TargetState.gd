@@ -15,6 +15,8 @@ func enter(_msg := {}):
 					character.targets = character.customer.duplicate()
 				character.OCCUPATION.REGISTER:
 					character.targets = character.register.duplicate()
+				character.OCCUPATION.CHEF:
+					character.targets = character.chef.duplicate()
 	else:
 		character.targets = [character.INTERACTION.LEAVE]
 	
