@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dqo228kijng4g"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_lmu2r"]
-[ext_resource type="PackedScene" uid="uid://dj7nav0r5ubuf" path="res://scenes/entity/HumanRenderer.tscn" id="2_7cfly"]
+[ext_resource type="PackedScene" uid="uid://bu3cwwf3fvg10" path="res://scenes/entity/HumanRenderer.tscn" id="2_7cfly"]
 [ext_resource type="Texture2D" uid="uid://dl11qlcf2vvd1" path="res://graphics/sprites/characters/spr_character_player.png" id="2_kwwf0"]
 [ext_resource type="PackedScene" uid="uid://d3l4cndthktrj" path="res://scenes/UI/UI.tscn" id="3_tbic2"]
 
@@ -21,7 +21,7 @@ shape = SubResource("CircleShape2D_pom20")
 sprite_sheet = ExtResource("2_kwwf0")
 
 [node name="InteractionArea" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]

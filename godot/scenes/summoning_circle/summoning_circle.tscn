@@ -1,0 +1,54 @@
+[gd_scene load_steps=13 format=3 uid="uid://bnfydsxrbkg6i"]
+
+[ext_resource type="Material" uid="uid://dawwwjfmncyn0" path="res://shaders/pixel-magic-circle/pixel_summon_circle_rotation.tres" id="1_4y0u1"]
+[ext_resource type="Script" path="res://scenes/summoning_circle/summoning_circle.gd" id="1_yut8r"]
+[ext_resource type="PackedScene" uid="uid://drw0865onnspm" path="res://scenes/entity/entity.tscn" id="2_jjcxg"]
+[ext_resource type="PackedScene" uid="uid://dchj3175uk1lq" path="res://scenes/UI/selection_wheel.tscn" id="3_glwkb"]
+[ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="4_0tg3d"]
+[ext_resource type="Texture2D" uid="uid://dg3fws3rfhmsh" path="res://graphics/sprites/characters/spr_character_mimic.png" id="5_ccoj2"]
+[ext_resource type="Texture2D" uid="uid://dl11qlcf2vvd1" path="res://graphics/sprites/characters/spr_character_player.png" id="6_8hjit"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gaac5"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k5h1a"]
+atlas = ExtResource("4_0tg3d")
+region = Rect2(0, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vgx3u"]
+atlas = ExtResource("5_ccoj2")
+region = Rect2(0, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2j66g"]
+atlas = ExtResource("6_8hjit")
+region = Rect2(0, 8, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e66qm"]
+atlas = ExtResource("4_0tg3d")
+region = Rect2(0, 8, 16, 16)
+
+[node name="SummoningCircle" type="Area2D"]
+collision_layer = 4
+collision_mask = 4
+script = ExtResource("1_yut8r")
+eldriches = Array[PackedScene]([ExtResource("2_jjcxg"), ExtResource("2_jjcxg"), ExtResource("2_jjcxg")])
+
+[node name="Graphics" type="ColorRect" parent="."]
+material = ExtResource("1_4y0u1")
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(1, 1, 1, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gaac5")
+
+[node name="SelectionWheel" parent="." instance=ExtResource("3_glwkb")]
+outer_radius = 64
+inner_radius = 16
+line_width = 0
+option_images = Array[AtlasTexture]([SubResource("AtlasTexture_k5h1a"), SubResource("AtlasTexture_vgx3u"), SubResource("AtlasTexture_2j66g"), SubResource("AtlasTexture_e66qm")])
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
