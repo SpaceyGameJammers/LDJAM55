@@ -8,25 +8,33 @@ var wander_time:float
 var timer:Timer
 var workstation:Workstation
 var type
+var target: Vector2
 
 func enter(_msg := {}):
 	workstation = _msg["station"]
 	type = _msg["type"]
+	target = _msg["target"]
+	character.position = target
 	if workstation:
 		workstation.work_done.connect(_on_timer_timeout)
-		if character.occupation == character.OCCUPATION.CUSTOMER and workstation.has_method("customer_interact"):
+		if character.occupation == character.OCCUPATION.CUSTOMER:
 			workstation.customer_interact(character)
 		else:
 			workstation.start_worker_interact()
 	else:
 		state_machine.transition_to("TargetState", {})
-	
 	if type == character.INTERACTION.WAIT:
 		character.wait_timer.timeout.connect(_on_wait_over)
 		character.wait_timer.start()
 
 func physics_update(_delta:float):
+	if character.occupation == character.OCCUPATION.CUSTOMER:
+		character.human_renderer.update_direction((workstation.global_position - workstation.get_customer_position()).normalized())
+	else:
+		character.human_renderer.update_direction((workstation.global_position - workstation.get_worker_position()).normalized())
 	character.human_renderer.update_direction(Vector2.ZERO)
+	if type == character.INTERACTION.WAIT:
+		character.human_renderer.sit((workstation.global_position - workstation.get_customer_position()).normalized())
 
 func _on_wait_over():
 	state_machine.transition_to("TargetState", {"state": "mad"})

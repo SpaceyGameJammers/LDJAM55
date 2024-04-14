@@ -36,7 +36,7 @@ texture_progress = ExtResource("4_h75ss")
 [node name="Timer" type="Timer" parent="."]
 
 [node name="WorkerPosition" type="Marker2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 14)
 
 [node name="FoodIcon" type="Sprite2D" parent="."]
 visible = false

@@ -1,4 +1,5 @@
 extends Node2D
+class_name HumanRenderer
 
 @export var sprite_sheet : Texture2D = null
 
@@ -23,6 +24,7 @@ func update_direction(direction : Vector2):
 		if not sitting:
 			animation_tree.get("parameters/playback").travel("Idle")
 
-func sit():
+func sit(direction : Vector2):
 	sitting = true
+	animation_tree.set("parameters/Sit/blend_position", direction)
 	animation_tree.get("parameters/playback").travel("Sit")

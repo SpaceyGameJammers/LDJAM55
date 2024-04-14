@@ -5,7 +5,7 @@ class_name Entity
 @export var target: Node2D
 @export var nav_agent: NavigationAgent2D
 @export var occupation: OCCUPATION
-@export var human_renderer: Node
+@export var human_renderer: HumanRenderer
 @export var leave: Node2D
 @export var sprite_sheet: Texture2D
 
