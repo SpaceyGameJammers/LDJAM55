@@ -15,6 +15,5 @@ func _process(_delta):
 		serve()
 
 func serve():
-	#current_customer.serve() #Function for customers to notice that they have been served
 	current_customer = null
 	WorkstationManager.release_customer_workstation(type, self)

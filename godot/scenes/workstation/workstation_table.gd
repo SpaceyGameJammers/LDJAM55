@@ -8,3 +8,7 @@ func _process(delta):
 	else:
 		food_icon.visible = false
 	super._process(delta)
+
+func serve():
+	#current_customer.served() funktion för att anropa att uppgiften är klar
+	super.serve()
