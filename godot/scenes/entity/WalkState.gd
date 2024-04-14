@@ -16,7 +16,7 @@ func enter(_msg := {}):
 	if !nav_agent.navigation_finished.is_connected(_on_finished):
 		nav_agent.navigation_finished.connect(_on_finished)
 
-func physics_update(delta:float):
+func physics_update(_delta:float):
 	var dir = character.to_local(nav_agent.get_next_path_position()).normalized()
 	character.velocity = dir * speed
 	

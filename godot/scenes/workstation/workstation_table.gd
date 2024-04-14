@@ -2,7 +2,7 @@ extends CustomerWorkstation
 
 @onready var food_icon = $FoodIcon
 
-func _process(delta):
+func _process(_delta):
 	if current_customer != null:
 		food_icon.visible = true
 	else:
