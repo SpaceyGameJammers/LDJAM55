@@ -7,6 +7,7 @@ const atlas_size = Vector2i(2, 4)
 
 @export var resource_icon:RESOURCE_ICON = RESOURCE_ICON.MEAT
 @export var reverse_layout:bool = false
+@export var update_signal:String
 
 @onready var resource_text_rect = $TextureRect
 @onready var counter_label = $Counter
@@ -14,7 +15,7 @@ const atlas_size = Vector2i(2, 4)
 
 func _ready():
 	resource_text_rect.texture.region = Rect2((resource_icon % atlas_size.x) * icon_size.x, int(resource_icon / atlas_size.x)*icon_size.y, icon_size.x, icon_size.y)
-	ResourceManager.money_update.connect(update_amount)
+	ResourceManager.connect(update_signal, update_amount)
 	update_amount(0)
 	if reverse_layout:
 		alignment = BoxContainer.ALIGNMENT_END

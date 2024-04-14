@@ -5,5 +5,5 @@ func serve():
 	#var table = WorkstationManager.occupy_customer_workstation(WorkstationManager.WORKSTATION.TABLE) #Temporary should be deleted when actual customers exist
 	#table.current_customer = 1 #Temporary should be deleted when actual customers exist
 	if current_customer != null:
-		ResourceManager.add_money(4)
+		ResourceManager.change_money(4)
 		super.serve()

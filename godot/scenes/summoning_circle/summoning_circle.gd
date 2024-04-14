@@ -1,4 +1,3 @@
-@tool
 extends Area2D
 
 var summoning_song: AudioStream = load("res://audio/summon_song.wav")
