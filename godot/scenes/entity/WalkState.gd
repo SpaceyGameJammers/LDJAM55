@@ -1,7 +1,7 @@
 extends State
 class_name WalkState
 
-@export var character: CharacterBody2D
+@export var character: Entity
 @export var speed = 100.0
 @export var nav_agent: NavigationAgent2D
 
@@ -22,4 +22,7 @@ func physics_update(delta:float):
 	character.move_and_slide()
 
 func _on_finished():
-	state_machine.transition_to("InteractState", { "type": type, "station": station })
+	if type == character.INTERACTION.LEAVE:
+		character.queue_free()
+	else:
+		state_machine.transition_to("InteractState", { "type": type, "station": station })

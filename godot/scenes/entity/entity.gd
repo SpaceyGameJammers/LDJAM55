@@ -4,21 +4,31 @@ class_name Entity
 @export var speed = 100.0
 @export var target: Node2D
 @export var nav_agent: NavigationAgent2D
+@export var occupation: OCCUPATION
 
 @export var order: Node2D
 @export var eat: Node2D
 @export var leave: Node2D
 
-enum INTERACTION { ORDER, EAT, WALK, COOK_POT, LEAVE, RATE, PAY }
+enum INTERACTION { ORDER, REGISTER, EAT, WALK, WAIT, COOK_POT, LEAVE, RATE, PAY, TABLE }
+enum OCCUPATION { REGISTER, CHEF, CUSTOMER }
 
 var pathing: bool = false
-var targets = [
+
+var register = [
+	INTERACTION.REGISTER,
+	INTERACTION.TABLE
+]
+
+var customer = [
 	INTERACTION.ORDER,
+	INTERACTION.WALK,
+	INTERACTION.WAIT,
 	INTERACTION.EAT,
-	INTERACTION.RATE,
-	INTERACTION.PAY,
 	INTERACTION.LEAVE,
-	INTERACTION.COOK_POT,
+]
+
+var targets = [
 ]
 
 #func _physics_process(_delta):
