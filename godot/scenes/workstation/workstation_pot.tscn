@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://d4jdxqv5piu1u"]
 
-[ext_resource type="Script" path="res://scenes/workstation/workstation.gd" id="1_ip715"]
+[ext_resource type="Script" path="res://scenes/workstation/workstation_pot.gd" id="1_qkf6k"]
 [ext_resource type="Texture2D" uid="uid://cx4w37wuj6xem" path="res://graphics/sprites/workstations/spr_workstation_pot.png" id="1_tm0hr"]
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="3_v75qs"]
 
@@ -10,7 +10,7 @@ size = Vector2(16, 16)
 [node name="WorkstationPot" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_ip715")
+script = ExtResource("1_qkf6k")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_en76p")

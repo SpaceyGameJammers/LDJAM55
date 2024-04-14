@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://wbrth2yl08hc"]
 
-[ext_resource type="Script" path="res://scenes/workstation/workstation.gd" id="1_8udig"]
+[ext_resource type="Script" path="res://scenes/workstation/workstation_table.gd" id="1_3kfc0"]
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_dw8gq"]
 [ext_resource type="Texture2D" uid="uid://cnm515yf7xnam" path="res://graphics/sprites/workstations/spr_workstation_chair.png" id="3_80sfx"]
 [ext_resource type="Texture2D" uid="uid://kjn6xdob2mv4" path="res://graphics/sprites/workstations/spr_workstation_table.png" id="4_ua00i"]
@@ -11,7 +11,7 @@ size = Vector2(16, 16)
 [node name="WorkstationTable" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_8udig")
+script = ExtResource("1_3kfc0")
 type = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

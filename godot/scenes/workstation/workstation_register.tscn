@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b2pspr110xenm"]
 
-[ext_resource type="Script" path="res://scenes/workstation/workstation.gd" id="1_uheyi"]
+[ext_resource type="Script" path="res://scenes/workstation/workstation_register.gd" id="1_lpvqf"]
 [ext_resource type="Texture2D" uid="uid://d0xq7hbfd6co" path="res://graphics/sprites/workstations/spr_workstation_register.png" id="2_ew3wu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3sfg"]
@@ -9,8 +9,7 @@ size = Vector2(16, 16)
 [node name="WorkstationRegister" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_uheyi")
-type = 3
+script = ExtResource("1_lpvqf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_e3sfg")
