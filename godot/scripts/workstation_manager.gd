@@ -1,6 +1,6 @@
 extends Node
 
-enum WORKSTATION {POT, PAN, TABLE, REGISTER}
+enum WORKSTATION { POT, PAN, TABLE, REGISTER }
 var workstations: Dictionary = {}
 var customer_workstations: Dictionary = {}
 

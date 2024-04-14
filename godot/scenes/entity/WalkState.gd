@@ -22,5 +22,4 @@ func physics_update(delta:float):
 	character.move_and_slide()
 
 func _on_finished():
-	print("WALKED")
 	state_machine.transition_to("InteractState", { "type": type, "station": station })

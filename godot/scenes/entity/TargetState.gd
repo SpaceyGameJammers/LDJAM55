@@ -4,13 +4,12 @@ class_name TargetState
 @export var character: Entity
 
 func enter(_msg := {}):
-	print("TARGET")
 	var target
 	var type
 	var station:Workstation
 	
 	if !character.targets.is_empty():
-		while type == null:
+		while type == null or target == null:
 			match character.targets[0]:
 				character.INTERACTION.ORDER:
 					type = character.INTERACTION.ORDER
@@ -24,7 +23,8 @@ func enter(_msg := {}):
 				character.INTERACTION.COOK_POT:
 					type = character.INTERACTION.COOK_POT
 					station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.POT)
-					target = station.get_worker_position()
+					if station:
+						target = station.get_worker_position()
 			
 			character.targets.remove_at(0)
 		

@@ -7,12 +7,12 @@ class_name InteractState
 var move_direction:Vector2
 var wander_time:float
 var timer:Timer
+var workstation:Workstation
 
 func enter(_msg := {}):
-	print("INTERACT")
 	timer = Timer.new()
 	add_child(timer)
-	var workstation:Workstation = _msg["station"]
+	workstation = _msg["station"]
 	if workstation:
 		workstation.start_worker_interact()
 	timer.timeout.connect(_on_timer_timeout)
@@ -20,7 +20,10 @@ func enter(_msg := {}):
 	timer.start()
 
 func _on_timer_timeout():
-	print("INTERACT DONE")
 	remove_child(timer)
 	timer.queue_free()
 	state_machine.transition_to("TargetState", {})
+
+func exit():
+	if workstation:
+		workstation.stop_worker_interact()

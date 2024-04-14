@@ -8,6 +8,7 @@ func _ready():
 	super._ready()
 	timer.paused = true
 	timer.start()
+	timer.timeout.connect(_on_timer_timeout)
 
 func _process(_delta):
 	progress_bar.visible = progress_bar.value != 0 and progress_bar.value != progress_bar.max_value
@@ -22,3 +23,6 @@ func start_worker_interact():
 func stop_worker_interact():
 	super.stop_worker_interact()
 	timer.paused = true
+
+func _on_timer_timeout():
+	super.emit_signal("work_done")
