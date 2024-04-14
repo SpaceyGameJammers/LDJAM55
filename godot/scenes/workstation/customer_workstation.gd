@@ -17,17 +17,21 @@ func get_customer_position(): #Returns the position that the customer should aim
 func customer_interact(customer):
 	current_customer = customer
 
-func _process(_delta):
-	if current_customer != null and worker_interacting:
-		serve()
+func start_worker_interact():
+	if current_customer != null:
+		super.start_worker_interact()
+		timer.paused = false
+
+func stop_worker_interact():
+	if current_customer != null:
+		super.stop_worker_interact()
+		timer.paused = true
 
 func serve():
-	#current_customer.serve() #Function for customers to notice that they have been served
+	timer.paused = true
 	current_customer = null
 	WorkstationManager.release_customer_workstation(type, self)
-	timer.paused = false
+	super.emit_signal("work_done")
 
 func _on_timer_timeout():
-	timer.paused = true
-	timer.start()
-	super.emit_signal("work_done")
+	serve()

@@ -4,17 +4,21 @@ class_name TargetState
 @export var character: Entity
 
 func enter(_msg := {}):
+	print("TARGET")
 	var target
 	var type
 	var station:Workstation
 	
-	if character.targets.is_empty():
-		match character.occupation:
-			character.OCCUPATION.CUSTOMER:
-				character.targets = character.customer
-			character.OCCUPATION.REGISTER:
-				character.targets = character.register
-		print(str(character.targets))
+	if !_msg.has("state"):
+		if character.targets.is_empty():
+			match character.occupation:
+				character.OCCUPATION.CUSTOMER:
+					character.targets = character.customer.duplicate()
+				character.OCCUPATION.REGISTER:
+					character.targets = character.register.duplicate()
+			print(str(character.targets))
+	else:
+		character.targets = [character.INTERACTION.LEAVE]
 	
 	if !character.targets.is_empty():
 		while type == null or target == null:
@@ -51,6 +55,8 @@ func enter(_msg := {}):
 				"target": target, 
 				"station": station 
 			})
+		else:
+			print("No target")
 
 func exit():
 	character.pathing = true

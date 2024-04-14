@@ -38,8 +38,8 @@ shape = SubResource("CircleShape2D_cvb4f")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interact"]
 shape = SubResource("CircleShape2D_2xu5h")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
+[node name="WaitTimer" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
 
 [node name="StateMachine" type="Node" parent="."]
@@ -64,4 +64,4 @@ character = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="WaitTimer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,6 @@
 extends CustomerWorkstation
 
 func _process(delta): #This is temporary for test
-	super._process(delta)
 	if WorkstationManager.get_number_of_free_customer_workstations(WorkstationManager.WORKSTATION.TABLE) > 0:
 		current_customer = 1
 	else:
