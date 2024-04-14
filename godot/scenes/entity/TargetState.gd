@@ -16,12 +16,12 @@ func enter(_msg := {}):
 					character.targets = character.customer.duplicate()
 				character.OCCUPATION.REGISTER:
 					character.targets = character.register.duplicate()
-			print(str(character.targets))
 	else:
 		character.targets = [character.INTERACTION.LEAVE]
 	
 	if !character.targets.is_empty():
 		while type == null or target == null:
+			print(str(self) + ": " + str(character.targets))
 			match character.targets[0]:
 				character.INTERACTION.ORDER:
 					station = WorkstationManager.occupy_customer_workstation(WorkstationManager.WORKSTATION.REGISTER)
@@ -43,6 +43,16 @@ func enter(_msg := {}):
 				character.INTERACTION.COOK_POT:
 					type = character.INTERACTION.COOK_POT
 					station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.POT)
+					if station:
+						target = station.get_worker_position()
+				character.INTERACTION.REGISTER:
+					type = character.INTERACTION.REGISTER
+					station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.REGISTER)
+					if station:
+						target = station.get_worker_position()
+				character.INTERACTION.TABLE:
+					type = character.INTERACTION.TABLE
+					station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.TABLE)
 					if station:
 						target = station.get_worker_position()
 			

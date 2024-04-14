@@ -18,6 +18,6 @@ func update(delta:float):
 	if wander_time > 0:
 		wander_time -= delta
 
-func physics_update(delta:float):
+func physics_update(_delta:float):
 	if character:
 		character.velocity = move_direction * move_speed
