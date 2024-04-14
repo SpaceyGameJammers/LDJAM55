@@ -36,6 +36,12 @@ window/stretch/aspect="keep_height"
 
 enabled=PackedStringArray("res://addons/composition/plugin.cfg", "res://addons/pool_plugin/plugin.cfg", "res://addons/sten_finite_state_machine/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://graphics/": "green"
+}
+
 [gui]
 
 theme/custom="res://ui/theme.tres"
