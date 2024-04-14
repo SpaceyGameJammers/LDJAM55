@@ -1,0 +1,48 @@
+[gd_scene load_steps=8 format=3 uid="uid://bm3ubepqjd0cr"]
+
+[ext_resource type="Script" path="res://scenes/entity/FloaterRenderer.gd" id="1_putok"]
+[ext_resource type="Texture2D" uid="uid://bae2w86l36w3h" path="res://graphics/sprites/characters/spr_character_floater.png" id="1_tmvp6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_427ts"]
+atlas = ExtResource("1_tmvp6")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ay7ud"]
+atlas = ExtResource("1_tmvp6")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0xsyl"]
+atlas = ExtResource("1_tmvp6")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rqinn"]
+atlas = ExtResource("1_tmvp6")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ewyds"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_427ts")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ay7ud")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0xsyl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rqinn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FloaterRenderer" type="Node2D"]
+script = ExtResource("1_putok")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -9)
+sprite_frames = SubResource("SpriteFrames_ewyds")
+frame_progress = 0.20898

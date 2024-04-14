@@ -7,11 +7,14 @@ class_name WalkState
 
 var type: Interaction.types
 var station: Node2D
+var target: Vector2
 
 func enter(_msg := {}):
-	nav_agent.target_position = _msg["target"]
+	target = _msg["target"]
 	type = _msg["type"]
 	station = _msg["station"]
+	nav_agent.target_position = target
+	
 	if !nav_agent.navigation_finished.is_connected(_on_finished):
 		nav_agent.navigation_finished.connect(_on_finished)
 
@@ -27,4 +30,4 @@ func _on_finished():
 	if type == character.INTERACTION.LEAVE:
 		character.queue_free()
 	else:
-		state_machine.transition_to("InteractState", { "type": type, "station": station })
+		state_machine.transition_to("InteractState", { "type": type, "station": station, "target": target })

@@ -21,6 +21,7 @@ layer_0/tile_data = PackedInt32Array(0, 65539, 0, 1, 131075, 3, 2, 131075, 3, 3,
 
 [node name="WorkstationPot" parent="." instance=ExtResource("5_fk5mj")]
 position = Vector2(184, 40)
+has_pot = true
 
 [node name="WorkstationRegister" parent="." instance=ExtResource("6_reber")]
 position = Vector2(40, 168)
