@@ -22,7 +22,6 @@ config/icon="res://icon.svg"
 UserSettings="*res://settings/user_settings.gd"
 WorkstationManager="*res://scripts/workstation_manager.gd"
 ResourceManager="*res://scripts/resource_manager.gd"
-Workstation="*res://scenes/workstation/workstation.gd"
 
 [display]
 
