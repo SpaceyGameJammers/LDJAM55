@@ -30,6 +30,10 @@ var customer = [
 	INTERACTION.LEAVE,
 ]
 
+var chef = [
+	INTERACTION.COOK_POT
+]
+
 var targets = [
 ]
 

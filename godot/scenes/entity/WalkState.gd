@@ -22,7 +22,8 @@ func physics_update(_delta:float):
 	var dir = character.to_local(nav_agent.get_next_path_position()).normalized()
 	character.velocity = dir * speed
 	
-	character.human_renderer.update_direction(character.velocity.normalized())
+	if character.human_renderer != null:
+		character.human_renderer.update_direction(character.velocity.normalized())
 	
 	character.move_and_slide()
 

@@ -16,7 +16,8 @@ func enter(_msg := {}):
 	target = _msg["target"]
 	character.position = target
 	if workstation:
-		workstation.work_done.connect(_on_timer_timeout)
+		if !workstation.work_done.is_connected(_on_timer_timeout):
+			workstation.work_done.connect(_on_timer_timeout)
 		if character.occupation == character.OCCUPATION.CUSTOMER:
 			workstation.customer_interact(character)
 		else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ce4xk3kryli5r"]
+[gd_scene load_steps=14 format=3 uid="uid://ce4xk3kryli5r"]
 
 [ext_resource type="TileSet" uid="uid://bsb5g7q5uviho" path="res://graphics/tilesets/tset_resturant.tres" id="1_sqdk3"]
 [ext_resource type="PackedScene" uid="uid://dqo228kijng4g" path="res://scenes/player/player.tscn" id="2_0r2fj"]
@@ -11,6 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="9_b0mre"]
 [ext_resource type="PackedScene" uid="uid://bnfydsxrbkg6i" path="res://scenes/summoning_circle/summoning_circle.tscn" id="10_an6ee"]
 [ext_resource type="Texture2D" uid="uid://bae2w86l36w3h" path="res://graphics/sprites/characters/spr_character_floater.png" id="11_yrvni"]
+[ext_resource type="PackedScene" uid="uid://bl5f85rptdnnx" path="res://scenes/workstation/workstation_sink.tscn" id="12_s0mn4"]
+[ext_resource type="PackedScene" uid="uid://clrwyrlx5818k" path="res://scenes/workstation/workstation_fryer.tscn" id="13_1gb5a"]
 
 [node name="Test" type="Node2D"]
 y_sort_enabled = true
@@ -29,6 +31,12 @@ position = Vector2(40, 168)
 
 [node name="WorkstationTable" parent="." instance=ExtResource("5_fdjni")]
 position = Vector2(136, 168)
+
+[node name="WorkstationSink" parent="." instance=ExtResource("12_s0mn4")]
+position = Vector2(232, 40)
+
+[node name="WorkstationFryer" parent="." instance=ExtResource("13_1gb5a")]
+position = Vector2(200, 40)
 
 [node name="Player" parent="." instance=ExtResource("2_0r2fj")]
 position = Vector2(40, 144)
