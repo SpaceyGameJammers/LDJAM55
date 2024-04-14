@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bppcy64vtryy5"]
+[gd_scene load_steps=15 format=3 uid="uid://bppcy64vtryy5"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="8_ywbli"]
 [ext_resource type="Texture2D" uid="uid://dg3fws3rfhmsh" path="res://graphics/sprites/characters/spr_character_mimic.png" id="9_roma6"]
 [ext_resource type="AudioStream" uid="uid://6l1j6pp11obi" path="res://audio/song1.wav" id="10_3rcu4"]
+[ext_resource type="PackedScene" uid="uid://bnfydsxrbkg6i" path="res://scenes/summoning_circle/summoning_circle.tscn" id="10_grr0t"]
+[ext_resource type="Script" path="res://scripts/music.gd" id="12_rf7hs"]
 
 [node name="IngameScene" type="Node2D"]
 y_sort_enabled = true
@@ -48,10 +50,14 @@ sprite_sheet = ExtResource("9_roma6")
 [node name="Leave" type="Node2D" parent="."]
 position = Vector2(128, 271)
 
+[node name="SummoningCircle" parent="." instance=ExtResource("10_grr0t")]
+position = Vector2(247, 191)
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("10_3rcu4")
 autoplay = true
 bus = &"Music"
+script = ExtResource("12_rf7hs")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
