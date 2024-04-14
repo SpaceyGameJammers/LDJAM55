@@ -10,6 +10,9 @@ func _ready():
 	if sprite_sheet != null:
 		$Sprite2D.texture = sprite_sheet
 
+func set_texture(texture: Texture2D):
+	$Sprite2D.texture = texture
+
 func update_direction(direction : Vector2):
 	if direction != Vector2.ZERO:
 		sitting = false

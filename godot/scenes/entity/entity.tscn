@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://drw0865onnspm"]
+[gd_scene load_steps=10 format=3 uid="uid://drw0865onnspm"]
 
 [ext_resource type="Script" path="res://scenes/entity/entity.gd" id="1_tgt6x"]
-[ext_resource type="PackedScene" path="res://scenes/entity/HumanRenderer.tscn" id="2_k7kn4"]
-[ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="3_asgxo"]
+[ext_resource type="PackedScene" uid="uid://bu3cwwf3fvg10" path="res://scenes/entity/HumanRenderer.tscn" id="2_k7kn4"]
 [ext_resource type="Script" path="res://addons/sten_finite_state_machine/scripts/state_machine.gd" id="3_ykk51"]
 [ext_resource type="Script" path="res://scenes/entity/TargetState.gd" id="4_jbqcy"]
 [ext_resource type="Script" path="res://scenes/entity/InteractState.gd" id="5_nr2h0"]
@@ -28,7 +27,6 @@ target_desired_distance = 0.1
 path_postprocessing = 1
 
 [node name="HumanRenderer" parent="." instance=ExtResource("2_k7kn4")]
-sprite_sheet = ExtResource("3_asgxo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cvb4f")
