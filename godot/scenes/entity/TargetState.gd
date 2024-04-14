@@ -4,7 +4,6 @@ class_name TargetState
 @export var character: Entity
 
 func enter(_msg := {}):
-	print("TARGET")
 	var target
 	var type
 	var station:Workstation
