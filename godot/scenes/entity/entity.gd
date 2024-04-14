@@ -9,7 +9,7 @@ class_name Entity
 @export var eat: Node2D
 @export var leave: Node2D
 
-enum INTERACTION { ORDER, EAT, WALK, COOK, LEAVE, RATE, PAY }
+enum INTERACTION { ORDER, EAT, WALK, COOK_POT, LEAVE, RATE, PAY }
 
 var pathing: bool = false
 var targets = [
@@ -17,7 +17,9 @@ var targets = [
 	INTERACTION.EAT,
 	INTERACTION.RATE,
 	INTERACTION.PAY,
-	INTERACTION.LEAVE
+	INTERACTION.LEAVE,
+	INTERACTION.COOK_POT,
+	INTERACTION.COOK_POT,
 ]
 
 #func _physics_process(_delta):

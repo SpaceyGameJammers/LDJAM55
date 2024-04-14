@@ -6,10 +6,12 @@ class_name WalkState
 @export var nav_agent: NavigationAgent2D
 
 var type: Interaction.types
+var station: Node2D
 
 func enter(_msg := {}):
 	nav_agent.target_position = _msg["target"] 
 	type = _msg["type"]
+	station = _msg["station"]
 	if !nav_agent.navigation_finished.is_connected(_on_finished):
 		nav_agent.navigation_finished.connect(_on_finished)
 
@@ -21,4 +23,4 @@ func physics_update(delta:float):
 
 func _on_finished():
 	print("WALKED")
-	state_machine.transition_to("InteractState", { "type": type })
+	state_machine.transition_to("InteractState", { "type": type, "station": station })

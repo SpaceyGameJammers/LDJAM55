@@ -12,6 +12,9 @@ func enter(_msg := {}):
 	print("INTERACT")
 	timer = Timer.new()
 	add_child(timer)
+	var workstation:Workstation = _msg["station"]
+	if workstation:
+		workstation.start_worker_interact()
 	timer.timeout.connect(_on_timer_timeout)
 	timer.wait_time = 2.0
 	timer.start()
