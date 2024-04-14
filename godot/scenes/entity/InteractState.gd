@@ -10,7 +10,6 @@ var workstation:Workstation
 var type
 
 func enter(_msg := {}):
-	print("INTERACT")
 	workstation = _msg["station"]
 	type = _msg["type"]
 	if workstation:
@@ -34,4 +33,6 @@ func _on_timer_timeout():
 
 func exit():
 	if workstation and character.occupation != character.OCCUPATION.CUSTOMER:
-		workstation.stop_worker_interact()
+		WorkstationManager.release_workstation(workstation.type, workstation)
+	if workstation and character.occupation == character.OCCUPATION.CUSTOMER:
+		WorkstationManager.release_customer_workstation(workstation.type, workstation)
