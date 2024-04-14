@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d3l4cndthktrj"]
 
 [ext_resource type="PackedScene" uid="uid://bynxq8d6nsilk" path="res://scenes/UI/resource_counter.tscn" id="1_2c3mr"]
-[ext_resource type="Texture2D" uid="uid://c4vbh6mc44nft" path="res://graphics/sprites/UI/spr_gui_nslice_frame.png" id="1_r35ui"]
+[ext_resource type="Texture2D" uid="uid://mcqa6q1iebdq" path="res://graphics/sprites/UI/spr_gui_nslice_frame_tentacles.png" id="1_x67oe"]
 [ext_resource type="Texture2D" uid="uid://bchppwoha2kwq" path="res://graphics/sprites/UI/spr_gui_stars_background.png" id="2_wp8ng"]
 [ext_resource type="Texture2D" uid="uid://byj0qvt8y4v40" path="res://graphics/sprites/UI/spr_gui_stars.png" id="3_8jxvm"]
 [ext_resource type="Script" path="res://scenes/UI/resource_progressbar.gd" id="5_vl6nk"]
@@ -21,11 +21,11 @@ layout_mode = 0
 offset_top = 248.0
 offset_right = 40.0
 offset_bottom = 324.0
-texture = ExtResource("1_r35ui")
-patch_margin_left = 7
-patch_margin_top = 7
-patch_margin_right = 7
-patch_margin_bottom = 7
+texture = ExtResource("1_x67oe")
+patch_margin_left = 26
+patch_margin_top = 27
+patch_margin_right = 11
+patch_margin_bottom = 10
 
 [node name="MarginContainer" type="MarginContainer" parent="Control/NinePatchRect"]
 layout_mode = 1
@@ -34,10 +34,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
 [node name="CenterContainer" type="CenterContainer" parent="Control/NinePatchRect/MarginContainer"]
 layout_mode = 2
