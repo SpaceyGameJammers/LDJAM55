@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://def0qar7n3esb"]
+[gd_scene load_steps=9 format=3 uid="uid://tvektu4i5oeg"]
 
 [ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="1_fbkqk"]
 [ext_resource type="Script" path="res://scenes/UI/selection_wheel.gd" id="2_87xer"]
-[ext_resource type="Texture2D" uid="uid://bonmow7dt2bso" path="res://graphics/sprites/spr_tileset_floor.png" id="3_sqid5"]
+[ext_resource type="Texture2D" uid="uid://bonmow7dt2bso" path="res://graphics/sprites/tilesets/spr_tileset_floor.png" id="3_sqid5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_28kma"]
 size = Vector2(16, 16)

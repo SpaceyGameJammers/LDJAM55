@@ -1,5 +1,4 @@
 extends StaticBody2D
-class_name Workstation
 
 var worker_interacting: bool = false
 @onready var worker_position: Marker2D = $WorkerPosition

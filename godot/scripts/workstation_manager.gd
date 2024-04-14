@@ -4,7 +4,8 @@ enum WORKSTATION {POT, PAN, TABLE, REGISTER}
 var workstations: Dictionary = {}
 var customer_workstations: Dictionary = {}
 
-func add_workstation(type: WORKSTATION, workstation:Node):
+func add_workstation(type: WORKSTATION, workstation:Workstation):
+	print("Add " + str(type))
 	if workstations.has(type):
 		workstations[type].append(workstation)
 	else:
@@ -15,7 +16,7 @@ func add_workstation(type: WORKSTATION, workstation:Node):
 		else:
 			customer_workstations[type] = [workstation]
 
-func occupy_workstation(type: WORKSTATION):
+func occupy_workstation(type: WORKSTATION) -> Workstation:
 	if type == null:
 		return null
 	else:
@@ -37,11 +38,11 @@ func occupy_customer_workstation(type: WORKSTATION):
 		else:
 			return null
 
-func release_workstation(type: WORKSTATION, workstation:Node):
+func release_workstation(type: WORKSTATION, workstation:Workstation):
 	if not workstations[type].has(workstation):
 		workstations[type].append(workstation)
 
-func release_customer_workstation(type: WORKSTATION, workstation:Node):
+func release_customer_workstation(type: WORKSTATION, workstation:Workstation):
 	if not customer_workstations[type].has(workstation):
 		customer_workstations[type].append(workstation)
 
