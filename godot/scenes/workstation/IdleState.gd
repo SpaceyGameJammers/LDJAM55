@@ -9,7 +9,7 @@ func enter(_msg := {}):
 	station.food_icon.visible = false
 
 func physics_update(_delta:float):
-	if station.progress_bar.value > 0.0:
+	if station.progress_bar.value > 9.0:
 		state_machine.transition_to("CookingState", {})
 	if !station.has_pot:
 		state_machine.transition_to("EmptyState", {})

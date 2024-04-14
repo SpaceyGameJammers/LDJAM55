@@ -39,9 +39,12 @@ func end_summoning(eldrich_id):
 	print_debug(eldrich_id)
 	if eldrich_id - 1 == 2:
 		eldirch.human_renderer.queue_free()
-		eldirch.add_child(floatrender.instantiate())
+		var temp = floatrender.instantiate()
+		eldirch.add_child(temp)
+		eldirch.human_renderer = temp
 	else:
 		eldirch.sprite_sheet = sprites[eldrich_id - 1]
+	eldirch.occupation = eldirch.OCCUPATION.CHEF
 	get_parent().add_child(eldirch)
 	eldirch.global_position = self.global_position
 
