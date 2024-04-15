@@ -15,7 +15,6 @@ func enter(_msg := {}):
 func update(_delta):
 	if has_state:
 		if character.targets.is_empty():
-			print(str(self) + ": NEED JOBS")
 			match character.occupation:
 				character.OCCUPATION.CUSTOMER:
 					character.targets = character.customer.duplicate()
@@ -30,7 +29,6 @@ func update(_delta):
 	else:
 		character.targets = [character.INTERACTION.LEAVE]
 	
-	print(str(self) + ": " + str(character.targets))
 	if !character.targets.is_empty():
 		match character.targets[0]:
 			character.INTERACTION.ORDER:
@@ -55,6 +53,16 @@ func update(_delta):
 				station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.POT)
 				if station:
 					target = station.get_worker_position()
+			character.INTERACTION.FRYER:
+				type = character.INTERACTION.FRYER
+				station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.FRYER)
+				if station:
+					target = station.get_worker_position()
+			character.INTERACTION.DISHWASHER:
+				type = character.INTERACTION.DISHWASHER
+				station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.SINK)
+				if station:
+					target = station.get_worker_position()
 			character.INTERACTION.REGISTER:
 				type = character.INTERACTION.REGISTER
 				station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.REGISTER)
@@ -67,6 +75,7 @@ func update(_delta):
 					target = station.get_worker_position()
 		
 	if target != null and type != null:
+		print(str(self) + ": CLAIMED " + str(target))
 		character.targets.remove_at(0)
 		state_machine.transition_to("WalkState", 
 		{ 
@@ -74,8 +83,6 @@ func update(_delta):
 			"target": target, 
 			"station": station 
 		})
-	else:
-		print("No target")
 
 func exit():
 	character.pathing = true

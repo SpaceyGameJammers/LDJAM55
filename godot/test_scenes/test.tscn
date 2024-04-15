@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="9_b0mre"]
 [ext_resource type="PackedScene" uid="uid://bnfydsxrbkg6i" path="res://scenes/summoning_circle/summoning_circle.tscn" id="10_an6ee"]
 [ext_resource type="Script" path="res://scripts/music.gd" id="10_soctw"]
-[ext_resource type="PackedScene" uid="uid://bl5f85rptdnnx" path="res://scenes/workstation/workstation_sink.tscn" id="12_s0mn4"]
+[ext_resource type="PackedScene" uid="uid://3ord22tf8nc1" path="res://scenes/workstation/workstation_sink.tscn" id="12_s0mn4"]
 [ext_resource type="PackedScene" uid="uid://clrwyrlx5818k" path="res://scenes/workstation/workstation_fryer.tscn" id="13_1gb5a"]
 
 [node name="Test" type="Node2D"]

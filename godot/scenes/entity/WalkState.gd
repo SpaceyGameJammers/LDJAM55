@@ -17,6 +17,8 @@ func enter(_msg := {}):
 	
 	if !nav_agent.navigation_finished.is_connected(_on_finished):
 		nav_agent.navigation_finished.connect(_on_finished)
+	if !character.occupation_changed.is_connected(_set_oc):
+		character.occupation_changed.connect(_set_oc)
 
 func physics_update(_delta:float):
 	var dir = character.to_local(nav_agent.get_next_path_position()).normalized()
@@ -29,9 +31,15 @@ func physics_update(_delta:float):
 	
 	character.move_and_slide()
 
-
 func _on_finished():
 	if type == character.INTERACTION.LEAVE:
 		character.queue_free()
 	else:
 		state_machine.transition_to("InteractState", { "type": type, "station": workstation, "target": target })
+
+
+func _set_oc(new, old):
+	print(str(workstation) + ": WORK DONE")
+	character.targets.clear()
+	WorkstationManager.release_workstation(workstation.type, workstation)
+	state_machine.transition_to("TargetState", {})

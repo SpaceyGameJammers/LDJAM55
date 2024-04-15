@@ -65,8 +65,8 @@ func _draw():
 	
 	if controller_active:
 		var radius_difference = outer_radius - inner_radius
-		print_debug(controller_direction)
-		print_debug((inner_radius + radius_difference/2.0) * controller_direction)
+		#print_debug(controller_direction)
+		#print_debug((inner_radius + radius_difference/2.0) * controller_direction)
 		draw_circle((inner_radius + radius_difference/2.0) * controller_direction, marker_radius, marker_color)
 	
 	if selection == 0:
