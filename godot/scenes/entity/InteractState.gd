@@ -42,7 +42,6 @@ func physics_update(_delta:float):
 		character.human_renderer.sit((workstation.global_position - workstation.get_customer_position()).normalized())
 
 func _on_wait_over():
-	print("_____________________")
 	if character.occupation == character.OCCUPATION.CUSTOMER:
 		print(str(workstation) + ": MAD LEAVING")
 		state_machine.transition_to("TargetState", {"state": "mad"})
@@ -50,7 +49,6 @@ func _on_wait_over():
 		print(str(workstation) + ": WORK CANCELED")
 		workstation.work_done.emit()
 		state_machine.transition_to("TargetState", {})
-	print("_____________________")
 
 func _on_customer_timeout():
 	print(str(workstation) + ": CUSTOMER DONE")
