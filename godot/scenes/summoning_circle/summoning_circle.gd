@@ -13,6 +13,8 @@ var eldrich_scene: PackedScene = load("res://scenes/entity/entity.tscn")
 var rotation_speed = 1
 var img_rotation = PI/1.795
 var floatrender = preload("res://scenes/entity/FloaterRenderer.tscn")
+var eldritches_on_circle = 0
+var player: Player = null
 
 func _ready():
 	ring1_img.visible = true
@@ -26,6 +28,8 @@ func _ready():
 	pass
 
 func end_summoning(eldrich_id):
+	player.resume()
+	rotation_speed = 0
 	(shader.material as ShaderMaterial).set_shader_parameter("speed", rotation_speed)
 	if eldrich_id == 0:
 		return
@@ -39,7 +43,7 @@ func end_summoning(eldrich_id):
 		eldirch.human_renderer = temp
 	else:
 		eldirch.sprite_sheet = sprites[eldrich_id - 1]
-	eldirch.occupation = eldirch.OCCUPATION.CHEF
+	eldirch.occupation = eldirch.OCCUPATION.NONE
 	get_parent().add_child(eldirch)
 	eldirch.global_position = self.global_position
 
@@ -48,13 +52,22 @@ func _process(delta):
 	ring2_img.rotate(rotation_speed * img_rotation * delta)
 
 func _input(event:InputEvent):
-	if accessable and event.is_action_pressed("interact"):
+	if accessable and event.is_action_pressed("interact") and eldritches_on_circle == 0:
+		player.stop()
 		rotation_speed = 1
 		(shader.material as ShaderMaterial).set_shader_parameter("speed", rotation_speed)
 		selection_wheel.open()
 
-func _on_area_entered(_area):
-	accessable = true
+func _on_area_entered(area:Area2D):
+	if area.get_parent() is Player:
+		accessable = true
+		player = area.get_parent()
+	elif area.get_parent() is Entity:
+		eldritches_on_circle += 1
 
-func _on_area_exited(_area):
-	accessable = false
+func _on_area_exited(area:Area2D):
+	if area.get_parent() is Player:
+		accessable = false
+		player = null
+	elif area.get_parent() is Entity:
+		eldritches_on_circle -= 1

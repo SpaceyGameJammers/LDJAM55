@@ -3,7 +3,7 @@ extends Control
 
 signal option_selected(option:int)
 
-const SPRITE_SIZE = Vector2(16, 24)
+#const SPRITE_SIZE = Vector2(16, 24)
 
 @export var bkg_color: Color
 @export var line_color: Color
@@ -59,7 +59,7 @@ func _process(_delta):
 	queue_redraw()
 
 func _draw():
-	var offset = SPRITE_SIZE / -2
+#	var offset = SPRITE_SIZE / -2
 	
 	draw_circle(Vector2.ZERO, outer_radius, bkg_color)
 	
@@ -72,7 +72,7 @@ func _draw():
 	if selection == 0:
 		draw_circle(Vector2.ZERO, inner_radius, highlight_color)
 	
-	draw_texture_rect_region(option_images[0].atlas, Rect2(offset, SPRITE_SIZE), option_images[0].region)
+	draw_texture_rect_region(option_images[0].atlas, Rect2(option_images[0].region.size / -2, option_images[0].region.size), option_images[0].region)
 	for i in range(1, len(option_images)):
 		var start_rads = (TAU * (-i)) / (len(option_images) - 1) + PI/2
 		var end_rads = (TAU * (-i + 1)) / (len(option_images) - 1) + PI/2
@@ -90,8 +90,8 @@ func _draw():
 			points_outer.reverse()
 			draw_polygon(points_inner + points_outer, PackedColorArray([highlight_color]))
 		
-		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + offset
-		draw_texture_rect_region(option_images[i].atlas, Rect2(draw_pos, SPRITE_SIZE), option_images[i].region)
+		var draw_pos = radius_mid * Vector2.from_angle(mid_rads) + option_images[i].region.size / -2
+		draw_texture_rect_region(option_images[i].atlas, Rect2(draw_pos, option_images[i].region.size), option_images[i].region)
 	# draw separator lines
 	for i in range(len(option_images) - 1):
 		var rads = TAU * i/(len(option_images) - 1) - PI/2
