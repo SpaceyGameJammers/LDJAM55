@@ -20,6 +20,8 @@ func enter(_msg := {}):
 
 func physics_update(_delta:float):
 	var dir = character.to_local(nav_agent.get_next_path_position()).normalized()
+	if character.is_stopped:
+		dir = Vector2.ZERO
 	character.velocity = dir * speed
 	
 	if character.human_renderer != null:
