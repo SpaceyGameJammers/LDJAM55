@@ -29,6 +29,7 @@ func physics_update(_delta:float):
 
 func _on_finished():
 	if type == character.INTERACTION.LEAVE:
+		ResourceManager.change_rating(randf_range(0.5, 1))
 		character.queue_free()
 	else:
 		state_machine.transition_to("InteractState", { "type": type, "station": station, "target": target })
