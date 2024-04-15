@@ -1,11 +1,9 @@
 extends HBoxContainer
 
-enum RESOURCE_ICON {MEAT, FISH, POTATO, CARROT, BREAD, MUSHROOM, WINE, TENTACLE, PLATES}
-
 const icon_size = Vector2i(8, 8)
 const atlas_size = Vector2i(2, 4)
 
-@export var resource_icon:RESOURCE_ICON = RESOURCE_ICON.MEAT
+@export_enum("Meat", "Fish", "Potato", "Carrot", "Bread", "Mushroom", "Wine", "Tentacle", "Plate", "Dirty Plate", "Coin", "Money") var resource_icon : int = 0
 @export var reverse_layout:bool = false
 @export var update_signal:String
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scenes/UI/resource_counter.gd" id="1_c2wfl"]
 [ext_resource type="Texture2D" uid="uid://2wi1y7opuhsa" path="res://graphics/sprites/UI/spr_gui_icon_resources.png" id="2_cfpe0"]
-[ext_resource type="FontFile" uid="uid://dwqqpio6ubqww" path="res://ui/fnt_i_pixel_u.ttf" id="3_67s0a"]
+[ext_resource type="FontFile" uid="uid://dwqqpio6ubqww" path="res://fonts/fnt_i_pixel_u.ttf" id="3_67s0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmuqv"]
 resource_local_to_scene = true
