@@ -1,18 +1,62 @@
-[gd_scene load_steps=10 format=3 uid="uid://drw0865onnspm"]
+[gd_scene load_steps=28 format=3 uid="uid://drw0865onnspm"]
 
 [ext_resource type="Script" path="res://scenes/entity/entity.gd" id="1_tgt6x"]
 [ext_resource type="PackedScene" uid="uid://bu3cwwf3fvg10" path="res://scenes/entity/HumanRenderer.tscn" id="2_k7kn4"]
+[ext_resource type="PackedScene" uid="uid://dchj3175uk1lq" path="res://scenes/UI/selection_wheel.tscn" id="3_2iw3c"]
 [ext_resource type="Script" path="res://addons/sten_finite_state_machine/scripts/state_machine.gd" id="3_ykk51"]
 [ext_resource type="Script" path="res://scenes/entity/TargetState.gd" id="4_jbqcy"]
+[ext_resource type="Texture2D" uid="uid://c62sfm7asx4vm" path="res://graphics/sprites/UI/spr_icon_block.png" id="4_k2emg"]
+[ext_resource type="Texture2D" uid="uid://cx4w37wuj6xem" path="res://graphics/sprites/workstations/spr_workstation_pot.png" id="4_ypcp5"]
+[ext_resource type="Texture2D" uid="uid://da5rlojapkpdq" path="res://graphics/sprites/workstations/spr_workstation_fryer.png" id="5_f6i15"]
 [ext_resource type="Script" path="res://scenes/entity/InteractState.gd" id="5_nr2h0"]
+[ext_resource type="Texture2D" uid="uid://bonmow7dt2bso" path="res://graphics/sprites/tilesets/spr_tileset_floor.png" id="5_r5ns4"]
+[ext_resource type="Texture2D" uid="uid://bxg5wsvc670ln" path="res://graphics/sprites/workstations/spr_workstation_dishes.png" id="6_b2tmd"]
 [ext_resource type="Script" path="res://scenes/entity/WaitState.gd" id="6_ptv5j"]
+[ext_resource type="Texture2D" uid="uid://bgct83lhh1jan" path="res://graphics/sprites/workstations/spr_workstation_oven.png" id="7_408rj"]
 [ext_resource type="Script" path="res://scenes/entity/WalkState.gd" id="7_ttbvi"]
+[ext_resource type="Texture2D" uid="uid://kjn6xdob2mv4" path="res://graphics/sprites/workstations/spr_workstation_table.png" id="8_vmjhr"]
+[ext_resource type="Texture2D" uid="uid://d0xq7hbfd6co" path="res://graphics/sprites/workstations/spr_workstation_register.png" id="9_e2v5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvb4f"]
 radius = 7.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dgp5"]
+atlas = ExtResource("4_k2emg")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_58vug"]
+atlas = ExtResource("5_r5ns4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_05k8c"]
+atlas = ExtResource("4_ypcp5")
+region = Rect2(16, 0, 16, 21)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epyl4"]
+atlas = ExtResource("5_f6i15")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vvanb"]
+atlas = ExtResource("6_b2tmd")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v1jss"]
+atlas = ExtResource("7_408rj")
+region = Rect2(0, 0, 16, 26)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le2i1"]
+atlas = ExtResource("8_vmjhr")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cn0n"]
+atlas = ExtResource("9_e2v5d")
+region = Rect2(0, 0, 16, 20)
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_2xu5h"]
 radius = 16.0312
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yfjb3"]
+radius = 7.0
 
 [node name="Entity" type="CharacterBody2D" node_paths=PackedStringArray("nav_agent", "human_renderer")]
 light_mask = 2
@@ -30,6 +74,14 @@ path_postprocessing = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_cvb4f")
+
+[node name="SelectionWheel" parent="." instance=ExtResource("3_2iw3c")]
+marker_color = Color(0.807843, 0.807843, 0.807843, 0.423529)
+outer_radius = 64
+inner_radius = 16
+marker_radius = 8
+line_width = 0
+option_images = Array[AtlasTexture]([SubResource("AtlasTexture_1dgp5"), SubResource("AtlasTexture_58vug"), SubResource("AtlasTexture_05k8c"), SubResource("AtlasTexture_epyl4"), SubResource("AtlasTexture_vvanb"), SubResource("AtlasTexture_v1jss"), SubResource("AtlasTexture_le2i1"), SubResource("AtlasTexture_5cn0n")])
 
 [node name="Interact" type="Area2D" parent="."]
 
@@ -61,5 +113,14 @@ script = ExtResource("7_ttbvi")
 character = NodePath("../..")
 nav_agent = NodePath("../../NavigationAgent2D")
 
+[node name="CommandArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CommandArea"]
+shape = SubResource("CircleShape2D_yfjb3")
+
 [connection signal="target_reached" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_target_reached"]
 [connection signal="timeout" from="WaitTimer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="CommandArea" to="." method="_on_command_area_area_entered"]
+[connection signal="area_exited" from="CommandArea" to="." method="_on_command_area_area_exited"]

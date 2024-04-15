@@ -1,20 +1,22 @@
 extends CharacterBody2D
+class_name Player
 
 @export var speed = 4000
 @onready var interaction_area = $InteractionArea
 var interactables:Array = []
 var interacting_object = null
+var is_stopped = false
 
 func _physics_process(delta):
 	var input_vector = Vector2(Input.get_axis("move_left", "move_right"), Input.get_axis("move_up", "move_down")).normalized()
 	if interacting_object != null: #If interacting don't move
 		input_vector = Vector2.ZERO
-	
+	if is_stopped:
+		input_vector = Vector2.ZERO
 	$HumanRenderer.update_direction(input_vector)
 	
 	velocity = delta * input_vector * speed
 	if input_vector != Vector2.ZERO:
-		
 		interaction_area.rotation = roundf(input_vector.angle()/(PI/2)) * PI/2 if not is_equal_approx(absf(input_vector.x), absf(input_vector.y)) else Vector2(sign(input_vector.x), 0).angle()#floorf((input_vector.angle()+(PI/4))/(PI/2)) * PI/2
 	move_and_slide()
 
@@ -27,6 +29,12 @@ func _process(_delta):
 	if interacting_object != null and Input.is_action_just_released("interact"):
 		interacting_object.stop_worker_interact()
 		interacting_object = null
+
+func stop():
+	is_stopped = true
+
+func resume():
+	is_stopped = false
 
 func _on_interaction_area_area_entered(area):
 	if not interactables.has(area):
