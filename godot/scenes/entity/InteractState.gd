@@ -56,9 +56,10 @@ func _on_wait_over():
 		state_machine.transition_to("TargetState", {})
 
 func _on_customer_timeout():
-	print(str(workstation) + ": CUSTOMER DONE")
-	if type == character.INTERACTION.LEAVE:
-		ResourceManager.change_rating(randf_range(0.5, 1))
+	print(str(workstation) + ": CUSTOMER DONE " + str(type))
+	if type == character.INTERACTION.WAIT:
+		character.wait_timer.paused = true 
+		ResourceManager.change_rating(character.wait_timer.time_left/(character.wait_timer.wait_time-workstation.timer.wait_time))
 	WorkstationManager.release_customer_workstation(workstation.type, workstation)
 	state_machine.transition_to("TargetState", {})
 
