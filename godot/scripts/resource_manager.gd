@@ -9,8 +9,13 @@ signal update_carrots(amount: int)
 signal update_potatoes(amount: int)
 signal update_wine(amount: int)
 signal update_plates(amount: int)
+signal update_raw_meat(amount: int)
+signal update_raw_fish(amount: int)
+signal update_raw_carrots(amount: int)
+signal update_raw_potatoes(amount: int)
+signal update_dirty_plates(amount: int)
 
-var rating_score: int = 0
+var rating_score: float = 0
 var number_of_ratings: int = 0
 var rating: float = 0.5
 var money: int = 0
@@ -41,6 +46,7 @@ func assemble_food(MEAT:int, FISH:int, CARROTS:int, POTATOES:int, WINE:int):
 func cook_meat(amount:int) -> bool:
 	if raw_meat > 0:
 		raw_meat -= amount
+		update_raw_meat.emit(raw_meat)
 		change_meat(amount)
 		return true
 	return false
@@ -48,6 +54,7 @@ func cook_meat(amount:int) -> bool:
 func cook_fish(amount:int) -> bool:
 	if raw_fish > 0:
 		raw_fish -= amount
+		update_raw_fish.emit(raw_fish)
 		change_fish(amount)
 		return true
 	return false
@@ -55,6 +62,7 @@ func cook_fish(amount:int) -> bool:
 func cook_carrots(amount:int) -> bool:
 	if raw_carrots > 0:
 		raw_carrots -= amount
+		update_raw_carrots.emit(raw_carrots)
 		change_carrots(amount)
 		return true
 	return false
@@ -62,6 +70,7 @@ func cook_carrots(amount:int) -> bool:
 func cook_potatoes(amount:int) -> bool:
 	if raw_potatoes > 0:
 		raw_potatoes -= amount
+		update_raw_potatoes.emit(raw_potatoes)
 		change_potatoes(amount)
 		return true
 	return false
@@ -69,6 +78,7 @@ func cook_potatoes(amount:int) -> bool:
 func clean_plate(amount:int) -> bool:
 	if dirty_plates > 0:
 		dirty_plates -= amount
+		update_dirty_plates.emit(dirty_plates)
 		change_plates(amount)
 		return true
 	return false
@@ -101,10 +111,10 @@ func change_plates(amount:int):
 	plates += amount
 	update_plates.emit(plates)
 
-func change_rating(score:int):
+func change_rating(score:float):
 	rating_score += score
 	number_of_ratings += 1
-	rating = (rating_score as float) / (number_of_ratings as float)
+	rating = ((rating_score as float) / (number_of_ratings as float))
 	update_rating.emit(rating)
 
 func change_suss(score:float):
