@@ -1,6 +1,6 @@
 extends HBoxContainer
 
-enum RESOURCE_ICON {MEAT, FISH, POTATO, CARROT, BREAD, MUSHROOM, WINE, TENTACLE}
+enum RESOURCE_ICON {MEAT, FISH, POTATO, CARROT, BREAD, MUSHROOM, WINE, TENTACLE, PLATES}
 
 const icon_size = Vector2i(8, 8)
 const atlas_size = Vector2i(2, 4)
@@ -16,6 +16,7 @@ const atlas_size = Vector2i(2, 4)
 func _ready():
 	resource_text_rect.texture.region = Rect2((resource_icon % atlas_size.x) * icon_size.x, int(resource_icon / atlas_size.x)*icon_size.y, icon_size.x, icon_size.y)
 	ResourceManager.connect(update_signal, update_amount)
+	ResourceManager.change_plates(0)
 	update_amount(0)
 	if reverse_layout:
 		alignment = BoxContainer.ALIGNMENT_END

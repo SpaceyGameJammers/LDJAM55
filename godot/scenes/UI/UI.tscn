@@ -18,7 +18,7 @@ grow_vertical = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Control"]
 layout_mode = 0
-offset_top = 248.0
+offset_top = 239.0
 offset_right = 40.0
 offset_bottom = 324.0
 texture = ExtResource("1_x67oe")
@@ -69,6 +69,11 @@ update_signal = "update_potatoes"
 layout_mode = 2
 resource_icon = 6
 update_signal = "update_wine"
+
+[node name="PlatesCounter" parent="Control/NinePatchRect/MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource("1_2c3mr")]
+layout_mode = 2
+resource_icon = 8
+update_signal = "update_plates"
 
 [node name="RankingProgress" type="TextureProgressBar" parent="Control"]
 layout_mode = 0

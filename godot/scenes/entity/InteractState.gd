@@ -41,10 +41,9 @@ func _on_wait_over():
 	state_machine.transition_to("TargetState", {"state": "mad"})
 
 func _on_timer_timeout():
-	state_machine.transition_to("TargetState", {})
+	if character.occupation == character.OCCUPATION.CUSTOMER:
+		state_machine.transition_to("TargetState", {})
 
 func exit():
-	if workstation and character.occupation != character.OCCUPATION.CUSTOMER:
-		WorkstationManager.release_workstation(workstation.type, workstation)
-	if workstation and character.occupation == character.OCCUPATION.CUSTOMER:
+	if workstation:
 		WorkstationManager.release_customer_workstation(workstation.type, workstation)

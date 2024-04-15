@@ -8,17 +8,70 @@ signal update_fish(amount: int)
 signal update_carrots(amount: int)
 signal update_potatoes(amount: int)
 signal update_wine(amount: int)
+signal update_plates(amount: int)
 
 var rating_score: int = 0
 var number_of_ratings: int = 0
 var rating: float = 0.5
 var money: int = 0
 var suss: float = 0.25
+
 var meat: int = 0
 var fish: int = 0
 var carrots: int = 0
 var potatoes: int = 0
+var plates: int = 10
+
+var raw_meat: int = 10
+var raw_fish: int = 10
+var raw_carrots: int = 10
+var raw_potatoes: int = 10
+var dirty_plates: int = 0
+
 var wine: int = 0
+
+func assemble_food(meat:int, fish:int, carrots:int, potatoes:int, wine:int):
+	change_meat(-meat)
+	change_fish(-fish)
+	change_carrots(-carrots)
+	change_potatoes(-potatoes)
+	change_wine(-wine)
+	change_plates(-1)
+
+func cook_meat(amount:int) -> bool:
+	if raw_meat > 0:
+		raw_meat -= amount
+		change_meat(amount)
+		return true
+	return false
+
+func cook_fish(amount:int) -> bool:
+	if raw_fish > 0:
+		raw_fish -= amount
+		change_fish(amount)
+		return true
+	return false
+
+func cook_carrots(amount:int) -> bool:
+	if raw_carrots > 0:
+		raw_carrots -= amount
+		change_carrots(amount)
+		return true
+	return false
+
+func cook_potatoes(amount:int) -> bool:
+	if raw_potatoes > 0:
+		raw_potatoes -= amount
+		change_potatoes(amount)
+		return true
+	return false
+
+func clean_plate(amount:int) -> bool:
+	if dirty_plates > 0:
+		dirty_plates -= amount
+		change_plates(amount)
+		return true
+	return false
 
 func change_money(amount:int):
 	money += amount
@@ -43,6 +96,10 @@ func change_potatoes(amount:int):
 func change_wine(amount:int):
 	wine += amount
 	update_wine.emit(wine)
+
+func change_plates(amount:int):
+	plates += amount
+	update_plates.emit(plates)
 
 func change_rating(score:int):
 	rating_score += score
