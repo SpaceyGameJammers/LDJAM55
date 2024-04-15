@@ -21,6 +21,7 @@ enum OCCUPATION { NONE, REGISTER, CHEF, CUSTOMER, DISHWASHER, FRYER }
 var pathing: bool = false
 var contact_with_player: bool = false
 var player: Player = null
+var is_stopped: bool = false
 
 var register = [
 	INTERACTION.REGISTER,
@@ -56,6 +57,7 @@ func _input(event):
 	if contact_with_player and event.is_action_pressed("interact") and occupation != OCCUPATION.CUSTOMER:
 		selection_wheel.open()
 		player.stop()
+		is_stopped = true
 
 func set_occupation(new_job:OCCUPATION):
 	var old = occupation
@@ -64,6 +66,7 @@ func set_occupation(new_job:OCCUPATION):
 
 func select_occupation_from_wheel(job_id:int):
 	player.resume()
+	is_stopped = false
 	var new_job:OCCUPATION
 	match job_id:
 		1:
