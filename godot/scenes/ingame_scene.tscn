@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://drw0865onnspm" path="res://scenes/entity/entity.tscn" id="7_lwrsm"]
 [ext_resource type="Texture2D" uid="uid://ddsi55skwv1rc" path="res://graphics/sprites/characters/spr_character_customer_1.png" id="8_ywbli"]
 [ext_resource type="Texture2D" uid="uid://dg3fws3rfhmsh" path="res://graphics/sprites/characters/spr_character_mimic.png" id="9_roma6"]
-[ext_resource type="AudioStream" uid="uid://6l1j6pp11obi" path="res://audio/song1.wav" id="10_3rcu4"]
+[ext_resource type="PackedScene" uid="uid://btwj4hlivo6j7" path="res://scenes/customer_spawner/customer_spawner.tscn" id="10_42wxw"]
 [ext_resource type="PackedScene" uid="uid://bnfydsxrbkg6i" path="res://scenes/summoning_circle/summoning_circle.tscn" id="10_grr0t"]
 [ext_resource type="Script" path="res://scripts/music.gd" id="12_rf7hs"]
 
@@ -37,24 +37,22 @@ position = Vector2(136, 168)
 [node name="Player" parent="." instance=ExtResource("6_a4k0f")]
 position = Vector2(40, 144)
 
-[node name="Entity" parent="." node_paths=PackedStringArray("leave") instance=ExtResource("7_lwrsm")]
+[node name="Entity" parent="." instance=ExtResource("7_lwrsm")]
 position = Vector2(129, 212)
 occupation = 2
-leave = NodePath("../Leave")
 sprite_sheet = ExtResource("8_ywbli")
 
 [node name="Entity2" parent="." instance=ExtResource("7_lwrsm")]
 position = Vector2(197, 157)
 sprite_sheet = ExtResource("9_roma6")
 
-[node name="Leave" type="Node2D" parent="."]
-position = Vector2(128, 271)
+[node name="CustomerSpawner" parent="." instance=ExtResource("10_42wxw")]
+position = Vector2(128, 272)
 
 [node name="SummoningCircle" parent="." instance=ExtResource("10_grr0t")]
 position = Vector2(247, 191)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("10_3rcu4")
 autoplay = true
 bus = &"Music"
 script = ExtResource("12_rf7hs")

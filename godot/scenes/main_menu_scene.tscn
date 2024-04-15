@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="3_kf1us"]
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="4_fnufg"]
 [ext_resource type="FontFile" uid="uid://dwqqpio6ubqww" path="res://fonts/fnt_i_pixel_u.ttf" id="5_3jm0c"]
-[ext_resource type="AudioStream" uid="uid://c4nafsju35log" path="res://audio/song2.wav" id="6_ppg4y"]
+[ext_resource type="AudioStream" uid="uid://3l6xp6agwpx0" path="res://audio/menu_song.wav" id="7_pt085"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ikbh"]
 font_size = 8
@@ -80,6 +80,6 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_ppg4y")
+stream = ExtResource("7_pt085")
 autoplay = true
 bus = &"Music"

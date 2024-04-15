@@ -1,6 +1,6 @@
 extends Node
 
-var main_song: AudioStream = load("res://audio/song1.wav")
+var main_song: AudioStream = load("res://audio/main_song.wav")
 var main_song_position = 0
 var audio_player: AudioStreamPlayer = null
 
