@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dv2y18ye8j7o0"]
+[gd_scene load_steps=10 format=3 uid="uid://dv2y18ye8j7o0"]
 
 [ext_resource type="Script" path="res://scenes/main_menu_scene.gd" id="1_1foie"]
 [ext_resource type="PackedScene" uid="uid://bppcy64vtryy5" path="res://scenes/ingame_scene.tscn" id="2_833wo"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="4_fnufg"]
 [ext_resource type="FontFile" uid="uid://dwqqpio6ubqww" path="res://fonts/fnt_i_pixel_u.ttf" id="5_3jm0c"]
 [ext_resource type="AudioStream" uid="uid://3l6xp6agwpx0" path="res://audio/menu_song.wav" id="7_pt085"]
+[ext_resource type="AudioStream" uid="uid://kilxr6b1x34w" path="res://music/select.wav" id="8_psaqg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ikbh"]
 font_size = 8
@@ -83,3 +84,8 @@ visible = false
 stream = ExtResource("7_pt085")
 autoplay = true
 bus = &"Music"
+
+[node name="Select" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_psaqg")
+volume_db = -13.921
+attenuation = 2.2974

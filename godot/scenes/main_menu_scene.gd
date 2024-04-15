@@ -8,6 +8,7 @@ extends Node2D
 @onready var new_game_button := %NewGameButton
 @onready var settings_button := %SettingsButton
 @onready var exit_button := %ExitButton
+@onready var select := $Select
 
 var next_scene = game_scene
 var new_game = true
@@ -24,6 +25,16 @@ func _ready() -> void:
 	settings_button.pressed.connect(_on_settings_button_pressed)
 	exit_button.pressed.connect(_on_exit_button_pressed)
 	overlay.on_complete_fade_out.connect(_on_fade_overlay_on_complete_fade_out)
+	
+	new_game_button.mouse_entered.connect(_select)
+	continue_button.mouse_entered.connect(_select)
+	settings_button.mouse_entered.connect(_select)
+	exit_button.mouse_entered.connect(_select)
+	
+	new_game_button.focus_entered.connect(_select)
+	continue_button.focus_entered.connect(_select)
+	settings_button.focus_entered.connect(_select)
+	exit_button.focus_entered.connect(_select)
 	
 	if continue_button.visible:
 		continue_button.grab_focus()
@@ -54,3 +65,8 @@ func _on_fade_overlay_on_complete_fade_out() -> void:
 	if new_game and SaveGame.has_save():
 		SaveGame.delete_save()
 	get_tree().change_scene_to_packed(next_scene)
+
+
+func _select():
+	select.play()
+
