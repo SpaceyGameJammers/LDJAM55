@@ -2,14 +2,7 @@ extends Workstation
 class_name CustomerWorkstation
 
 @onready var customer_position = $CustomerPosition
-@onready var timer:Timer = $Timer
 var current_customer = null
-
-func _ready():
-	super._ready()
-	timer.paused = true
-	timer.start()
-	timer.timeout.connect(_on_timer_timeout)
 
 func get_customer_position(): #Returns the position that the customer should aim for
 	return customer_position.global_position

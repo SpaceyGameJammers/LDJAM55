@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bl5f85rptdnnx"]
+[gd_scene load_steps=7 format=3 uid="uid://3ord22tf8nc1"]
 
 [ext_resource type="Script" path="res://scenes/workstation/workstation_sink.gd" id="1_8cab5"]
 [ext_resource type="Texture2D" uid="uid://bxg5wsvc670ln" path="res://graphics/sprites/workstations/spr_workstation_dishes.png" id="2_qsywm"]
@@ -24,7 +24,6 @@ texture = ExtResource("2_qsywm")
 offset = Vector2(0, -0.5)
 
 [node name="ProgressBar" type="TextureProgressBar" parent="."]
-visible = false
 offset_left = -8.0
 offset_top = -17.0
 offset_right = 8.0

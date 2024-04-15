@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2pspr110xenm"]
+[gd_scene load_steps=6 format=3 uid="uid://b2pspr110xenm"]
 
 [ext_resource type="Script" path="res://scenes/workstation/workstation_register.gd" id="1_lpvqf"]
 [ext_resource type="Texture2D" uid="uid://d0xq7hbfd6co" path="res://graphics/sprites/workstations/spr_workstation_register.png" id="2_ew3wu"]
+[ext_resource type="Texture2D" uid="uid://lcbat3gtw20f" path="res://graphics/sprites/UI/spr_gui_workstation_progressbar_background.png" id="3_cmft5"]
+[ext_resource type="Texture2D" uid="uid://uvt1hhrvlg8u" path="res://graphics/sprites/UI/spr_gui_workstation_progressbar.png" id="4_wr0tn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e3sfg"]
 size = Vector2(16, 16)
@@ -26,3 +28,12 @@ position = Vector2(0, -2)
 texture = ExtResource("2_ew3wu")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
+visible = false
+offset_left = -8.0
+offset_top = -16.0
+offset_right = 8.0
+offset_bottom = -12.0
+texture_under = ExtResource("3_cmft5")
+texture_progress = ExtResource("4_wr0tn")
