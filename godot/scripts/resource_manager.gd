@@ -30,12 +30,12 @@ var dirty_plates: int = 0
 
 var wine: int = 0
 
-func assemble_food(meat:int, fish:int, carrots:int, potatoes:int, wine:int):
-	change_meat(-meat)
-	change_fish(-fish)
-	change_carrots(-carrots)
-	change_potatoes(-potatoes)
-	change_wine(-wine)
+func assemble_food(MEAT:int, FISH:int, CARROTS:int, POTATOES:int, WINE:int):
+	change_meat(-MEAT)
+	change_fish(-FISH)
+	change_carrots(-CARROTS)
+	change_potatoes(-POTATOES)
+	change_wine(-WINE)
 	change_plates(-1)
 
 func cook_meat(amount:int) -> bool:

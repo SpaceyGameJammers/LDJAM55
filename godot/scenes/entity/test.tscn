@@ -1,8 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://bq1rqk3k7plui"]
+[gd_scene load_steps=4 format=3 uid="uid://dnur7ef1ptibg"]
 
 [ext_resource type="PackedScene" uid="uid://drw0865onnspm" path="res://scenes/entity/entity.tscn" id="1_13deg"]
 [ext_resource type="TileSet" uid="uid://bsb5g7q5uviho" path="res://graphics/tilesets/tset_resturant.tres" id="1_vs5l8"]
-[ext_resource type="Material" uid="uid://bjap81yy8lprd" path="res://shaders/pixel-magic-circle/pixel_summon_circle_rotation.tres" id="3_qhtg2"]
+[ext_resource type="Material" uid="uid://dawwwjfmncyn0" path="res://shaders/pixel-magic-circle/pixel_summon_circle_rotation.tres" id="3_qhtg2"]
 
 [node name="Test" type="Node2D"]
 
@@ -20,11 +20,9 @@ position = Vector2(413, 84)
 [node name="Leave" type="Node2D" parent="."]
 position = Vector2(303, 272)
 
-[node name="Entity" parent="." node_paths=PackedStringArray("target", "order", "eat", "leave") instance=ExtResource("1_13deg")]
+[node name="Entity" parent="." node_paths=PackedStringArray("target", "leave") instance=ExtResource("1_13deg")]
 position = Vector2(172, 159)
 target = NodePath("../Order")
-order = NodePath("../Order")
-eat = NodePath("../Eat")
 leave = NodePath("../Leave")
 
 [node name="ColorRect" type="ColorRect" parent="."]
