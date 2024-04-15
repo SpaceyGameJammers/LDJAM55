@@ -15,18 +15,13 @@ var img_rotation = PI/1.795
 var floatrender = preload("res://scenes/entity/FloaterRenderer.tscn")
 
 func _ready():
-	if OS.has_feature("web"):
-		ring1_img.visible = true
-		ring2_img.visible = true
-		hex_img.visible = true
-		shader.visible = false
-	else:
-		ring1_img.visible = false
-		ring2_img.visible = false
-		hex_img.visible = false
-		shader.visible = true
+	ring1_img.visible = true
+	ring2_img.visible = true
+	hex_img.visible = true
+	shader.visible = false
 	
 	selection_wheel.option_selected.connect(end_summoning)
+	rotation_speed = 0
 	(shader.material as ShaderMaterial).set_shader_parameter("speed", rotation_speed)
 	pass
 
@@ -49,9 +44,8 @@ func end_summoning(eldrich_id):
 	eldirch.global_position = self.global_position
 
 func _process(delta):
-	if OS.has_feature("web"):
-		ring1_img.rotate(-rotation_speed * img_rotation * delta)
-		ring2_img.rotate(rotation_speed * img_rotation * delta)
+	ring1_img.rotate(-rotation_speed * img_rotation * delta)
+	ring2_img.rotate(rotation_speed * img_rotation * delta)
 
 func _input(event:InputEvent):
 	if accessable and event.is_action_pressed("interact"):
