@@ -38,12 +38,17 @@ func physics_update(_delta:float):
 	else:
 		character.human_renderer.update_direction((workstation.global_position - workstation.get_worker_position()).normalized())
 	character.human_renderer.update_direction(Vector2.ZERO)
+	if type == character.INTERACTION.TABLE:
+		if workstation.current_customer == null:
+			state_machine.transition_to("TargetState", {})
 	if type == character.INTERACTION.WAIT:
 		character.human_renderer.sit((workstation.global_position - workstation.get_customer_position()).normalized())
 
 func _on_wait_over():
 	if character.occupation == character.OCCUPATION.CUSTOMER:
 		print(str(workstation) + ": MAD LEAVING")
+		if type == character.INTERACTION.LEAVE:
+			ResourceManager.change_rating(randf_range(0.0, 0.2))
 		state_machine.transition_to("TargetState", {"state": "mad"})
 	else:
 		print(str(workstation) + ": WORK CANCELED")
@@ -52,6 +57,8 @@ func _on_wait_over():
 
 func _on_customer_timeout():
 	print(str(workstation) + ": CUSTOMER DONE")
+	if type == character.INTERACTION.LEAVE:
+		ResourceManager.change_rating(randf_range(0.5, 1))
 	WorkstationManager.release_customer_workstation(workstation.type, workstation)
 	state_machine.transition_to("TargetState", {})
 
