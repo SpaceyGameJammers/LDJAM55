@@ -31,6 +31,8 @@ func enter(_msg := {}):
 	if type == character.INTERACTION.WAIT:
 		character.wait_timer.timeout.connect(_on_wait_over)
 		character.wait_timer.start()
+	if !character.occupation_changed.is_connected(_set_oc):
+		character.occupation_changed.connect(_set_oc)
 
 func physics_update(_delta:float):
 	if character.occupation == character.OCCUPATION.CUSTOMER:
@@ -65,5 +67,11 @@ func _on_customer_timeout():
 
 func _on_work_timeout():
 	print(str(workstation) + ": WORK DONE")
+	WorkstationManager.release_workstation(workstation.type, workstation)
+	state_machine.transition_to("TargetState", {})
+
+func _set_oc(new, old):
+	print(str(workstation) + ": WORK DONE")
+	character.targets.clear()
 	WorkstationManager.release_workstation(workstation.type, workstation)
 	state_machine.transition_to("TargetState", {})
