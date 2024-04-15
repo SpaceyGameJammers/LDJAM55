@@ -19,10 +19,10 @@ func enter(_msg := {}):
 					character.targets = character.chef.duplicate()
 	else:
 		character.targets = [character.INTERACTION.LEAVE]
-	
-	if !character.targets.is_empty():
-		while type == null or target == null:
-			print(str(self) + ": " + str(character.targets))
+
+	while type == null or target == null:
+		print(str(self) + ": " + str(character.targets))
+		if !character.targets.is_empty():
 			match character.targets[0]:
 				character.INTERACTION.ORDER:
 					station = WorkstationManager.occupy_customer_workstation(WorkstationManager.WORKSTATION.REGISTER)
@@ -56,18 +56,19 @@ func enter(_msg := {}):
 					station = WorkstationManager.occupy_workstation(WorkstationManager.WORKSTATION.TABLE)
 					if station:
 						target = station.get_worker_position()
-			
 			character.targets.remove_at(0)
-		
-		if target:
-			state_machine.transition_to("WalkState", 
-			{ 
-				"type": type, 
-				"target": target, 
-				"station": station 
-			})
 		else:
-			print("No target")
+			break
+		
+	if target:
+		state_machine.transition_to("WalkState", 
+		{ 
+			"type": type, 
+			"target": target, 
+			"station": station 
+		})
+	else:
+		print("No target")
 
 func exit():
 	character.pathing = true
