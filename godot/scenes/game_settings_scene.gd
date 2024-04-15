@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var overlay := %FadeOverlay
 @onready var return_button := %ReturnButton
+@onready var select := $Select
 
 func _ready():
 	overlay.on_complete_fade_out.connect(_on_fade_overlay_on_complete_fade_out)
@@ -15,3 +16,7 @@ func _on_fade_overlay_on_complete_fade_out():
 
 func _on_return_button_pressed():
 	overlay.fade_out()
+
+
+func _select():
+	select.play()
