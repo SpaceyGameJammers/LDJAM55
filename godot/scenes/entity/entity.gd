@@ -78,10 +78,6 @@ func select_occupation_from_wheel(job_id:int):
 		4:
 			new_job = OCCUPATION.DISHWASHER
 		5:
-			new_job = OCCUPATION.NONE
-		6:
-			new_job = OCCUPATION.NONE
-		7:
 			new_job = OCCUPATION.REGISTER
 	set_occupation(new_job)
 

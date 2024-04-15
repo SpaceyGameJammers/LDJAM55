@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bppcy64vtryy5"]
+[gd_scene load_steps=15 format=3 uid="uid://bppcy64vtryy5"]
 
 [ext_resource type="Script" path="res://scenes/ingame_scene.gd" id="1_objyc"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="1_y6ebv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://btwj4hlivo6j7" path="res://scenes/customer_spawner/customer_spawner.tscn" id="10_42wxw"]
 [ext_resource type="PackedScene" uid="uid://bnfydsxrbkg6i" path="res://scenes/summoning_circle/summoning_circle.tscn" id="10_grr0t"]
 [ext_resource type="Script" path="res://scripts/music.gd" id="12_rf7hs"]
+[ext_resource type="Texture2D" uid="uid://bhb23dqw36lt4" path="res://graphics/sprites/workstations/spr_workstation_computer.png" id="14_tt2yj"]
 [ext_resource type="PackedScene" uid="uid://3ord22tf8nc1" path="res://scenes/workstation/workstation_sink.tscn" id="15_4mebt"]
 [ext_resource type="PackedScene" uid="uid://clrwyrlx5818k" path="res://scenes/workstation/workstation_fryer.tscn" id="16_klm3w"]
 
@@ -84,6 +85,7 @@ position = Vector2(264, 136)
 
 [node name="WorkstationPot3" parent="." instance=ExtResource("3_qedqv")]
 position = Vector2(312, 88)
+has_pot = true
 
 [node name="WorkstationFryer3" parent="." instance=ExtResource("16_klm3w")]
 position = Vector2(216, 136)
@@ -99,3 +101,8 @@ position = Vector2(216, 88)
 
 [node name="WorkstationPot4" parent="." instance=ExtResource("3_qedqv")]
 position = Vector2(360, 88)
+has_pot = true
+
+[node name="SprWorkstationComputer" type="Sprite2D" parent="."]
+position = Vector2(104, 128)
+texture = ExtResource("14_tt2yj")

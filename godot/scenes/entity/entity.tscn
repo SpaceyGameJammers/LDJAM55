@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://drw0865onnspm"]
+[gd_scene load_steps=24 format=3 uid="uid://drw0865onnspm"]
 
 [ext_resource type="Script" path="res://scenes/entity/entity.gd" id="1_tgt6x"]
 [ext_resource type="PackedScene" uid="uid://bu3cwwf3fvg10" path="res://scenes/entity/HumanRenderer.tscn" id="2_k7kn4"]
@@ -12,9 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bonmow7dt2bso" path="res://graphics/sprites/tilesets/spr_tileset_floor.png" id="5_r5ns4"]
 [ext_resource type="Texture2D" uid="uid://bxg5wsvc670ln" path="res://graphics/sprites/workstations/spr_workstation_dishes.png" id="6_b2tmd"]
 [ext_resource type="Script" path="res://scenes/entity/WaitState.gd" id="6_ptv5j"]
-[ext_resource type="Texture2D" uid="uid://bgct83lhh1jan" path="res://graphics/sprites/workstations/spr_workstation_oven.png" id="7_408rj"]
 [ext_resource type="Script" path="res://scenes/entity/WalkState.gd" id="7_ttbvi"]
-[ext_resource type="Texture2D" uid="uid://kjn6xdob2mv4" path="res://graphics/sprites/workstations/spr_workstation_table.png" id="8_vmjhr"]
 [ext_resource type="Texture2D" uid="uid://d0xq7hbfd6co" path="res://graphics/sprites/workstations/spr_workstation_register.png" id="9_e2v5d"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvb4f"]
@@ -38,14 +36,6 @@ region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vvanb"]
 atlas = ExtResource("6_b2tmd")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_v1jss"]
-atlas = ExtResource("7_408rj")
-region = Rect2(0, 0, 16, 26)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_le2i1"]
-atlas = ExtResource("8_vmjhr")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5cn0n"]
@@ -82,7 +72,7 @@ outer_radius = 64
 inner_radius = 16
 marker_radius = 8
 line_width = 0
-option_images = Array[AtlasTexture]([SubResource("AtlasTexture_1dgp5"), SubResource("AtlasTexture_58vug"), SubResource("AtlasTexture_05k8c"), SubResource("AtlasTexture_epyl4"), SubResource("AtlasTexture_vvanb"), SubResource("AtlasTexture_v1jss"), SubResource("AtlasTexture_le2i1"), SubResource("AtlasTexture_5cn0n")])
+option_images = Array[AtlasTexture]([SubResource("AtlasTexture_1dgp5"), SubResource("AtlasTexture_58vug"), SubResource("AtlasTexture_05k8c"), SubResource("AtlasTexture_epyl4"), SubResource("AtlasTexture_vvanb"), SubResource("AtlasTexture_5cn0n")])
 
 [node name="Interact" type="Area2D" parent="."]
 

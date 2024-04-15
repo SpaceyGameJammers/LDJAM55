@@ -35,6 +35,19 @@ var dirty_plates: int = 0
 
 var wine: int = 0
 
+func refresh_resource():
+	update_carrots.emit(carrots)
+	update_fish.emit(fish)
+	update_meat.emit(meat)
+	update_potatoes.emit(potatoes)
+	update_wine.emit(wine)
+	update_plates.emit(plates)
+	update_raw_carrots.emit(raw_carrots)
+	update_raw_fish.emit(raw_fish)
+	update_raw_meat.emit(raw_meat)
+	update_raw_potatoes.emit(raw_potatoes)
+	update_dirty_plates.emit(dirty_plates)
+
 func assemble_food(MEAT:int, FISH:int, CARROTS:int, POTATOES:int, WINE:int):
 	change_meat(-MEAT)
 	change_fish(-FISH)

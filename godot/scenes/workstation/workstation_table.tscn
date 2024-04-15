@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://wbrth2yl08hc"]
 
 [ext_resource type="Script" path="res://scenes/workstation/workstation_table.gd" id="1_3kfc0"]
-[ext_resource type="Texture2D" uid="uid://dmelj2qgr8w7k" path="res://icon.svg" id="2_dw8gq"]
+[ext_resource type="Texture2D" uid="uid://bix3gpdqparnl" path="res://graphics/sprites/UI/spr_gui_icon_dishes.png" id="2_qbk4k"]
 [ext_resource type="Texture2D" uid="uid://cnm515yf7xnam" path="res://graphics/sprites/workstations/spr_workstation_chair.png" id="3_80sfx"]
 [ext_resource type="Texture2D" uid="uid://kjn6xdob2mv4" path="res://graphics/sprites/workstations/spr_workstation_table.png" id="4_ua00i"]
 [ext_resource type="Texture2D" uid="uid://lcbat3gtw20f" path="res://graphics/sprites/UI/spr_gui_workstation_progressbar_background.png" id="5_entog"]
@@ -28,8 +28,10 @@ position = Vector2(16, 0)
 [node name="FoodIcon" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -18)
-scale = Vector2(0.0625, 0.0625)
-texture = ExtResource("2_dw8gq")
+texture = ExtResource("2_qbk4k")
+hframes = 3
+vframes = 2
+frame = 1
 
 [node name="SprWorkstationChair" type="Sprite2D" parent="."]
 position = Vector2(-16, 0)

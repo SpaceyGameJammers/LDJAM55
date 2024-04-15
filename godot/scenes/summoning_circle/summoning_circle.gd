@@ -36,7 +36,7 @@ func end_summoning(eldrich_id):
 	MusicManager.change_music(summoning_song)
 	var eldirch = eldrich_scene.instantiate()
 	print_debug(eldrich_id)
-	if eldrich_id - 1 == 2:
+	if eldrich_id - 1 == 1:
 		eldirch.human_renderer.queue_free()
 		var temp = floatrender.instantiate()
 		eldirch.add_child(temp)

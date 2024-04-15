@@ -76,5 +76,6 @@ func _on_work_timeout():
 func _set_oc(new, old):
 	print(str(workstation) + ": WORK DONE")
 	character.targets.clear()
+	workstation.stop_worker_interact()
 	WorkstationManager.release_workstation(workstation.type, workstation)
 	state_machine.transition_to("TargetState", {})
