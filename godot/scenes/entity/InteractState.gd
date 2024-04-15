@@ -16,8 +16,12 @@ func enter(_msg := {}):
 	target = _msg["target"]
 	character.position = target
 	if workstation:
-		if !workstation.work_done.is_connected(_on_timer_timeout):
-			workstation.work_done.connect(_on_timer_timeout)
+		if character.occupation == character.OCCUPATION.CUSTOMER:
+			if !workstation.customer_work_done.is_connected(_on_customer_timeout):
+				workstation.customer_work_done.connect(_on_customer_timeout)
+		else:
+			if !workstation.work_done.is_connected(_on_work_timeout):
+				workstation.work_done.connect(_on_work_timeout)
 		if character.occupation == character.OCCUPATION.CUSTOMER:
 			workstation.customer_interact(character)
 		else:
@@ -38,11 +42,22 @@ func physics_update(_delta:float):
 		character.human_renderer.sit((workstation.global_position - workstation.get_customer_position()).normalized())
 
 func _on_wait_over():
-	state_machine.transition_to("TargetState", {"state": "mad"})
-
-func _on_timer_timeout():
+	
 	if character.occupation == character.OCCUPATION.CUSTOMER:
+		print(str(workstation) + ": MAD LEAVING")
+		state_machine.transition_to("TargetState", {"state": "mad"})
+	else:
+		print(str(workstation) + ": WORK CANCELED")
+		workstation.work_done.emit()
 		state_machine.transition_to("TargetState", {})
+
+func _on_customer_timeout():
+	print(str(workstation) + ": CUSTOMER DONE")
+	state_machine.transition_to("TargetState", {})
+
+func _on_work_timeout():
+	print(str(workstation) + ": WORK DONE")
+	state_machine.transition_to("TargetState", {})
 
 func exit():
 	if workstation:

@@ -31,6 +31,7 @@ func serve():
 	timer.paused = true
 	current_customer = null
 	WorkstationManager.release_customer_workstation(type, self)
+	super.emit_signal("customer_work_done")
 	super.emit_signal("work_done")
 
 func _on_timer_timeout():

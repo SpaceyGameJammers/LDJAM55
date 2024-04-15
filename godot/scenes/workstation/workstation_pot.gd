@@ -30,4 +30,3 @@ func stop_worker_interact():
 
 func _on_timer_timeout():
 	ResourceManager.cook_carrots(1)
-	super.emit_signal("work_done")

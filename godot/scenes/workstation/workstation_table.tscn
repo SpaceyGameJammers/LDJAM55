@@ -38,3 +38,5 @@ texture = ExtResource("4_ua00i")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
+
+[node name="MadTimer" type="Timer" parent="."]

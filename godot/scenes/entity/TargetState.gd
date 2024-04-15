@@ -23,7 +23,7 @@ func enter(_msg := {}):
 					character.targets = character.fryer.duplicate()
 	else:
 		character.targets = [character.INTERACTION.LEAVE]
-
+	
 	while type == null or target == null:
 		print(str(self) + ": " + str(character.targets))
 		if !character.targets.is_empty():

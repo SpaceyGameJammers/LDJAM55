@@ -31,4 +31,3 @@ func stop_worker_interact():
 
 func _on_timer_timeout():
 	ResourceManager.clean_plate(1)
-	super.emit_signal("work_done")

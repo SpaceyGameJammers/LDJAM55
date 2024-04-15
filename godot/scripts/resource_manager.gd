@@ -134,5 +134,3 @@ func get_rating():
 
 func get_suss():
 	return suss
-
-

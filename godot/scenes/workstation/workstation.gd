@@ -2,6 +2,7 @@ extends StaticBody2D
 class_name Workstation
 
 signal work_done
+signal customer_work_done
 
 var worker_interacting: bool = false
 @onready var worker_position: Marker2D = $WorkerPosition
