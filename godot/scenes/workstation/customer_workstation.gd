@@ -19,7 +19,6 @@ func customer_interact(customer):
 
 func start_worker_interact():
 	if current_customer != null:
-		print(str(self) + ": Started working")
 		timer.paused = false
 		super.start_worker_interact()
 

@@ -15,6 +15,8 @@ func enter(_msg := {}):
 	type = _msg["type"]
 	target = _msg["target"]
 	character.position = target
+
+func update(_delta):
 	if workstation:
 		if character.occupation == character.OCCUPATION.CUSTOMER:
 			if !workstation.customer_work_done.is_connected(_on_customer_timeout):
