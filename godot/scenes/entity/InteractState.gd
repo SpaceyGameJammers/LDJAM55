@@ -31,7 +31,8 @@ func update(_delta):
 	else:
 		state_machine.transition_to("TargetState", {})
 	if type == character.INTERACTION.WAIT:
-		character.wait_timer.timeout.connect(_on_wait_over)
+		if not character.wait_timer.timeout.is_connected(_on_wait_over):
+			character.wait_timer.timeout.connect(_on_wait_over)
 		character.wait_timer.start()
 	if !character.occupation_changed.is_connected(_set_oc):
 		character.occupation_changed.connect(_set_oc)
