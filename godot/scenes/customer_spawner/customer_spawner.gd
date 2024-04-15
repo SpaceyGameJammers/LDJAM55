@@ -11,7 +11,9 @@ extends Node2D
 @onready var leave_point = $LeavePoint
 
 func _ready():
-	timer.start(max_spawntime*(1-ResourceManager.get_rating()))
+	var random_variation = randf_range(0, variation)
+	var spawn_time = max(min_spawntime, max_spawntime * (1-ResourceManager.get_rating())) * (1 + random_variation)
+	timer.start(spawn_time)
 
 func _on_timer_timeout():
 	var customer = customer_scene.instantiate()
@@ -21,5 +23,5 @@ func _on_timer_timeout():
 	customer.global_position = enter_point.global_position
 	customer.leave = leave_point
 	var random_variation = randf_range(0, variation)
-	var spawn_time = max(min_spawntime, max_spawntime * (1-ResourceManager.get_rating())) * random_variation
-	timer.start()
+	var spawn_time = max(min_spawntime, max_spawntime * (1-ResourceManager.get_rating())) * (1 + random_variation)
+	timer.start(spawn_time)
