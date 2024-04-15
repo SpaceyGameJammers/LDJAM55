@@ -14,9 +14,9 @@ customer_textures = Array[Texture2D]([ExtResource("3_m1546"), ExtResource("4_ge3
 one_shot = true
 
 [node name="EnterPoint" type="Marker2D" parent="."]
-position = Vector2(8, 0)
+position = Vector2(-16, 0)
 
 [node name="LeavePoint" type="Marker2D" parent="."]
-position = Vector2(-8, 0)
+position = Vector2(16, 0)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

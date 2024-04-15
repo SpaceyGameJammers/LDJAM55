@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://bsb5g7q5uviho"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://bsb5g7q5uviho"]
 
 [ext_resource type="Texture2D" uid="uid://dennw7k0kokxi" path="res://graphics/sprites/tilesets/spr_tileset_counter_wooden.png" id="1_ibreg"]
 [ext_resource type="Texture2D" uid="uid://bniwlf4hp7g5u" path="res://graphics/sprites/tilesets/spr_tileset_counter_metal.png" id="2_dvuu1"]
@@ -616,6 +616,22 @@ texture = ExtResource("5_7070r")
 3:3/0/physics_layer_0/angular_velocity = 0.0
 3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6r75v"]
+resource_name = "WallFloor"
+texture = ExtResource("3_jrndy")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+
 [resource]
 physics_layer_0/collision_layer = 1
 terrain_set_0/mode = 2
@@ -635,3 +651,4 @@ sources/1 = SubResource("TileSetAtlasSource_do205")
 sources/2 = SubResource("TileSetAtlasSource_atmun")
 sources/3 = SubResource("TileSetAtlasSource_fvld8")
 sources/4 = SubResource("TileSetAtlasSource_brpxp")
+sources/5 = SubResource("TileSetAtlasSource_6r75v")
